@@ -18,7 +18,7 @@ const imageStyle = {
 const IndexPage = () => (
   <div style={containerStyle}>
     <Link to='/loubucca'>
-    	<Image style={imageStyle} cloudName='ziro' publicId='loubucca-1_qhi1si' width='400' />
+    	<Image style={imageStyle} cloudName='ziro' width='400' publicId='loubucca-1' />
     	<h1 style={titleStyle}>Loubucca</h1>
     </Link>
   </div>

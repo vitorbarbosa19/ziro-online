@@ -33,9 +33,10 @@ export default class GaleriaMarca extends React.Component {
 		return (
 			<div>
 				<Helmet 
-					title='Marca: Loubucca'
+					title={`${this.state.photoURL}`}
 					meta={[
 						{ name: 'description', content: `${this.state.photoURL}` },
+						{ property: 'og:image', content: 'https://res.cloudinary.com/ziro/image/upload/v1507497199/loubucca-5.png' }
 					]}
 				/>
 				{this.state.allPhotos ?
