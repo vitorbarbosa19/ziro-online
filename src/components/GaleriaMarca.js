@@ -41,7 +41,7 @@ export default class GaleriaMarca extends React.Component {
 				{this.state.allPhotos ?
 			  	this.state.allPhotos.map( (photo, index) => {
 			  		return ( 
-				  		<a key={index} onClick={this.buildURL} href={`whatsapp://send?phone=15302048900&text=${this.state.photoURL}`}>
+				  		<a key={index} onClick={this.buildURL} href={`whatsapp://send?phone=5511996454922&text=${this.state.photoURL}`}>
 				  			<Image style={imageStyle} cloudName='ziro' width='400' publicId={photo.public_id} />
 				  		</a>
 				  	)
