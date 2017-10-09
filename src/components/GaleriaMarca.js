@@ -18,7 +18,7 @@ export default class GaleriaMarca extends React.Component {
 	}
 	buildURL() {
 		this.setState({
-			photoURL: `https://res.cloudinary.com/ziro/image/upload/${this.state.allPhotos[0].version}/${this.state.allPhotos[0].public_id}.png`
+			photoURL: `https://res.cloudinary.com/ziro/image/upload/v${this.state.allPhotos[0].version}/${this.state.allPhotos[0].public_id}.png`
 		})
 	}
 	componentDidMount() {
