@@ -18,7 +18,7 @@ export default class GaleriaMarca extends React.Component {
 	}
 	buildURL() {
 		this.setState({
-			photoURL: 'https://ziro.netlify.com/loubucca'//`https://res.cloudinary.com/ziro/image/upload/${this.state.allPhotos[0].version}/${this.state.allPhotos[0].public_id}.png`
+			photoURL: `https://res.cloudinary.com/ziro/image/upload/${this.state.allPhotos[0].version}/${this.state.allPhotos[0].public_id}.png`
 		})
 	}
 	componentDidMount() {
@@ -33,10 +33,9 @@ export default class GaleriaMarca extends React.Component {
 		return (
 			<div>
 				<Helmet 
-					title={`${this.state.photoURL}`}
+					title='Marca: Loubucca'
 					meta={[
-						{ name: 'description', content: `${this.state.photoURL}` },
-						{ property: 'og:image', content: 'https://res.cloudinary.com/ziro/image/upload/v1507497199/loubucca-5.png' }
+						{ property: 'og:image', content: `${this.state.photoURL}` }
 					]}
 				/>
 				{this.state.allPhotos ?
