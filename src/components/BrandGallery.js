@@ -35,7 +35,7 @@ export default class BrandGallery extends React.Component {
 			  	this.state.allPhotos.map( (photo, index) => {
 			  		return ( 
 				  		<a key={index} href={`${whatsappLink}${photo.version}/${photo.public_id}.jpg`}>
-				  			<Image style={imageStyle} cloudName='ziro' width='400' publicId={photo.public_id} format='jpg' />
+				  			<Image style={imageStyle} cloudName='ziro' width='400' publicId={photo.public_id} format='jpg' secure='true' />
 				  		</a>
 				  	)
 			  	})

@@ -54,7 +54,7 @@ export default class GalleryAllBrands extends React.Component {
           this.state.allBrandsWithThumbs.map( (brand, index) => {
             return (
               <Link key={index} to={`/${brand.name}`} >
-                <Image style={imageStyle} cloudName='ziro' width='400' publicId={brand.thumb_id[0]} format='jpg' />
+                <Image style={imageStyle} cloudName='ziro' width='400' publicId={brand.thumb_id[0]} format='jpg' secure='true' />
                 <h1 style={titleStyle}>{brand.name}</h1>
               </Link>
             )

@@ -27,6 +27,7 @@ const Header = (props) => (
         publicId='logo-original_lork1u'
         version='1508000699'
         format='png'
+        secure='true'
       />
       {props.page === '/' ? null : 
       <Link
@@ -44,6 +45,7 @@ const Header = (props) => (
           publicId='back-arrow_xdfk21'
           version='1508000698'
           format='png'
+          secure='true'
         />
         Voltar
       </Link>}

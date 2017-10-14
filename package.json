@@ -8,7 +8,9 @@
     "cloudinary-react": "^1.0.4",
     "gatsby": "^1.9.45",
     "gatsby-link": "^1.6.17",
+    "gatsby-plugin-favicon": "^1.0.0",
     "gatsby-plugin-google-fonts": "0.0.3",
+    "gatsby-plugin-manifest": "^1.0.8",
     "gatsby-plugin-react-helmet": "^1.0.5"
   },
   "keywords": [
