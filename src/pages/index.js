@@ -2,20 +2,26 @@ import React from 'react'
 import Link from 'gatsby-link'
 import cloudinaryApi from '../utils/cloudinaryApi'
 import { Image } from 'cloudinary-react'
+import Spinner from '../components/Spinner'
 
 const containerStyle = {
-	'display': 'flex',
-  'flexDirection': 'column',
-	'justifyContent': 'center'
+	display: 'flex',
+  flexDirection: 'column',
+	justifyContent: 'center',
+  alignItems: 'center'
 }
 
 const titleStyle = {
-	'textAlign': 'center'
+	textAlign: 'center',
+  fontSize: '24px',
+  fontWeight: '600',
+  color: 'rgba(48, 62, 77, 0.9)',
+  fontFamily: 'hind vadodara'
 }
 
 const imageStyle = {
-	'borderRadius': '2px',
-  'margin': '0'
+	borderRadius: '2px',
+  margin: '0'
 }
 
 const allBrands = [
@@ -34,7 +40,7 @@ export default class GalleryAllBrands extends React.Component {
     }
   }
   componentDidMount() {
-    cloudinaryApi.getThumbnails(allBrands)
+    cloudinaryApi.getThumbnailsAndNames(allBrands)
       .then( (response) => {
         this.setState({
           allBrandsWithThumbs: response
@@ -53,7 +59,7 @@ export default class GalleryAllBrands extends React.Component {
               </Link>
             )
           })
-        : <div>Loading...</div>
+        : <Spinner style={{textAlign: 'center'}} />
         }
       </div>
     )

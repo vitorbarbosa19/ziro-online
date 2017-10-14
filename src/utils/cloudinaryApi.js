@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 
 export default {
-	getThumbnails: (allBrands) => {
+	getThumbnailsAndNames: (allBrands) => {
 		return axios.all( allBrands.map( (brandName) => {
 			return axios.get(`https://res.cloudinary.com/ziro/image/list/${brandName.toLowerCase()}.json`)
 				.then( (response) => {
@@ -13,5 +13,8 @@ export default {
 					}
 				})	
 		}))
+	},
+	getBrandGallery: (brandName) => {
+		return axios.get(`https://res.cloudinary.com/ziro/image/list/${brandName.toLowerCase()}.json`)
 	}
 }

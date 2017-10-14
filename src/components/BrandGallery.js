@@ -1,12 +1,13 @@
 import React from 'react'
-import axios from 'axios'
+import cloudinaryApi from '../utils/cloudinaryApi'
 import { Image } from 'cloudinary-react'
+import Spinner from './Spinner'
 
 const imageStyle = {
-	'borderRadius': '2px'
+	borderRadius: '2px'
 }
 
-export default class GaleriaMarca extends React.Component {
+export default class BrandGallery extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -14,9 +15,8 @@ export default class GaleriaMarca extends React.Component {
 		}
 	}
 	componentDidMount() {
-		axios.get(`https://res.cloudinary.com/ziro/image/list/${this.props.marca.toLowerCase()}.json`)
+		cloudinaryApi.getBrandGallery(this.props.brand)
 			.then( (response) => {
-				console.log(response.data.resources)
 				this.setState({
 					allPhotos: response.data.resources
 				})
@@ -25,8 +25,12 @@ export default class GaleriaMarca extends React.Component {
 	render() {
 		const whatsappLink = 'whatsapp://send?phone=5511996454922&text=https://res.cloudinary.com/ziro/image/upload/v'
 		return (
-			<div style={{'textAlign': 'center'}}>
-			<h1>{this.props.marca}</h1>
+			<div style={{textAlign: 'center'}}>
+			<h1 style={{	fontSize: '32px',
+  									fontWeight: '600',
+  									color: 'rgba(48, 62, 77, 0.9)',
+  									fontFamily: 'hind vadodara'
+  							}}>{this.props.brand}</h1>
 				{this.state.allPhotos ?
 			  	this.state.allPhotos.map( (photo, index) => {
 			  		return ( 
@@ -36,7 +40,7 @@ export default class GaleriaMarca extends React.Component {
 				  	)
 			  	})
 				:
-					<div>Loading...</div>
+					<Spinner />
 				}
 			</div>
 		)

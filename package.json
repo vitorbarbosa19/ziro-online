@@ -8,10 +8,13 @@
     "cloudinary-react": "^1.0.4",
     "gatsby": "^1.9.45",
     "gatsby-link": "^1.6.17",
+    "gatsby-plugin-google-fonts": "0.0.3",
     "gatsby-plugin-react-helmet": "^1.0.5"
   },
   "keywords": [
-    "atacado", "moda", "bom retiro"
+    "atacado",
+    "moda",
+    "bom retiro"
   ],
   "license": "MIT",
   "main": "n/a",

@@ -2,13 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
-
+import { Image } from 'cloudinary-react'
 import './index.css'
 
 const Header = (props) => (
   <div
     style={{
-      background: '#364657',
+      background: '#303E4D',
       marginBottom: '1.45rem',
     }}>
     <div
@@ -20,22 +20,31 @@ const Header = (props) => (
         justifyContent: 'space-between',
         alignItems: 'center'
       }}>
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: '#FFD807',
-            textDecoration: 'none',
-          }}>
-          ZIRO
-        </Link>
-      </h1>
+      <Image
+        style={{margin: '0'}}
+        cloudName='ziro' 
+        width='120' 
+        publicId='logo-original_lork1u'
+        version='1508000699'
+        format='png'
+      />
       {props.page === '/' ? null : 
       <Link
         to="/" 
         style={{
-          color: '#fff'
+          color: '#fff',
+          fontFamily: 'karla',
+          display: 'flex',
+          alignItems: 'center'
         }}>
+        <Image
+          style={{margin: '0 5px 0 0'}}
+          cloudName='ziro'
+          width='14'
+          publicId='back-arrow_xdfk21'
+          version='1508000698'
+          format='png'
+        />
         Voltar
       </Link>}
     </div>

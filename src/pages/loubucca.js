@@ -1,6 +1,6 @@
 import React from 'react'
-import GaleriaMarca from '../components/GaleriaMarca'
+import BrandGallery from '../components/BrandGallery'
 
 export default (props) => (
-  <GaleriaMarca marca='Loubucca' />
+  <BrandGallery brand='Loubucca' />
 )
