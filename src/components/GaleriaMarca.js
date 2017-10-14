@@ -1,6 +1,5 @@
 import React from 'react'
 import axios from 'axios'
-import Helmet from 'react-helmet'
 import { Image } from 'cloudinary-react'
 
 const imageStyle = {
@@ -11,38 +10,28 @@ export default class GaleriaMarca extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			allPhotos: null,
-			photoURL: null
+			allPhotos: null
 		}
-		this.buildURL = this.buildURL.bind(this)
-	}
-	buildURL() {
-		this.setState({
-			photoURL: `https://res.cloudinary.com/ziro/image/upload/v${this.state.allPhotos[0].version}/${this.state.allPhotos[0].public_id}.png`
-		})
 	}
 	componentDidMount() {
-		axios.get('https://res.cloudinary.com/ziro/image/list/loubucca.json')
+		axios.get(`https://res.cloudinary.com/ziro/image/list/${this.props.marca.toLowerCase()}.json`)
 			.then( (response) => {
+				console.log(response.data.resources)
 				this.setState({
 					allPhotos: response.data.resources
 				})
 			})
 	}
 	render() {
+		const whatsappLink = 'whatsapp://send?phone=5511996454922&text=https://res.cloudinary.com/ziro/image/upload/v'
 		return (
-			<div>
-				<Helmet 
-					title='Marca: Loubucca'
-					meta={[
-						{ property: 'og:image', content: `${this.state.photoURL}` }
-					]}
-				/>
+			<div style={{'textAlign': 'center'}}>
+			<h1>{this.props.marca}</h1>
 				{this.state.allPhotos ?
 			  	this.state.allPhotos.map( (photo, index) => {
 			  		return ( 
-				  		<a key={index} onClick={this.buildURL} href={`whatsapp://send?phone=5511996454922&text=${this.state.photoURL}`}>
-				  			<Image style={imageStyle} cloudName='ziro' width='400' publicId={photo.public_id} />
+				  		<a key={index} href={`${whatsappLink}${photo.version}/${photo.public_id}.jpg`}>
+				  			<Image style={imageStyle} cloudName='ziro' width='400' publicId={photo.public_id} format='jpg' />
 				  		</a>
 				  	)
 			  	})
