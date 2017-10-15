@@ -9,7 +9,8 @@ export default {
 					const thumbnails = response.data.resources.map( (thumbnail) => thumbnail.public_id)
 					return {
 						name: brandName, 
-						thumb_id: thumbnails
+						thumb_id: thumbnails,
+						updated_at: response.data.updated_at
 					}
 				})	
 		}))

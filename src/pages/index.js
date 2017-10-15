@@ -25,11 +25,22 @@ const imageStyle = {
 }
 
 const allBrands = [
-  'Loubucca',
+  'Luzia Fazzolli',
+  //'Di Collani',
+  //'Unique Chic',
+  'Nuxx',
+  'Donna Ritz',
   'Blessed',
-  'Talgui',
-  'Karmani',
-  'Villon'
+  //'Innocense',
+  //'Ave Rara',
+  //'Karmani',
+  //'Amissima',
+  //'Lovlity',
+  //'Linny',
+  //'Hush',
+  'Loubucca',
+  'Champagne',
+  'Muse'
 ]
 
 export default class GalleryAllBrands extends React.Component {
@@ -42,6 +53,7 @@ export default class GalleryAllBrands extends React.Component {
   componentDidMount() {
     cloudinaryApi.getThumbnailsAndNames(allBrands)
       .then( (response) => {
+        console.log(response.sort( (a, b) => { return Date.parse(b.updated_at) - Date.parse(a.updated_at) }))
         this.setState({
           allBrandsWithThumbs: response
         })
@@ -51,9 +63,11 @@ export default class GalleryAllBrands extends React.Component {
     return (
       <div style={containerStyle}>
         {this.state.allBrandsWithThumbs ? 
-          this.state.allBrandsWithThumbs.map( (brand, index) => {
+          this.state.allBrandsWithThumbs.sort( (a, b) => {
+            return Date.parse(b.updated_at) - Date.parse(a.updated_at)
+          }).map( (brand, index) => {
             return (
-              <Link key={index} to={`/${brand.name}`} >
+              <Link key={index} to={`/${brand.name.toLowerCase().replace(/\s+/g, '-')}`} >
                 <Image style={imageStyle} cloudName='ziro' width='400' publicId={brand.thumb_id[0]} format='jpg' secure='true' />
                 <h1 style={titleStyle}>{brand.name}</h1>
               </Link>
