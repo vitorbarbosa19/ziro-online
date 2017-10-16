@@ -29,7 +29,7 @@ const imageStyle = {
 const allBrands = [
   'Luzia Fazzolli',
   //'Di Collani',
-  //'Unique Chic',
+  'Unique Chic',
   //'Nuxx',
   //'Donna Ritz',
   //'Blessed',
