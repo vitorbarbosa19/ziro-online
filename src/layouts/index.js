@@ -10,6 +10,7 @@ const Header = (props) => (
     style={{
       background: '#303E4D',
       position: 'fixed',
+      zIndex: '1',
       width: '100%'
     }}>
     <div

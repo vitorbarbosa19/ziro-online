@@ -20,7 +20,8 @@ const titleStyle = {
   margin: '-60px 0 20px',
   backgroundColor: 'rgba(48, 62, 77, 0.7)',
   position: 'relative',
-  padding: '12px 0'
+  padding: '12px 0',
+  zIndex: '0'
 }
 
 const imageStyle = {
