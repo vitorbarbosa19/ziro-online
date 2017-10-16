@@ -10,6 +10,8 @@ const Header = (props) => (
     style={{
       background: '#303E4D',
       marginBottom: '1.45rem',
+      position: 'fixed',
+      width: '100%'
     }}>
     <div
       style={{
@@ -23,7 +25,7 @@ const Header = (props) => (
       <Image
         style={{margin: '0'}}
         cloudName='ziro' 
-        width='120' 
+        width='90' 
         publicId='logo-original_lork1u'
         version='1508000699'
         format='png'
@@ -69,8 +71,8 @@ export default class TemplateWrapper extends React.Component {
           style={{
             margin: '0 auto',
             maxWidth: 400,
-            padding: '0px 1.0875rem 1.45rem',
-            paddingTop: 0,
+            padding: '0px 0.875rem 1.45rem',
+            paddingTop: '88px',
           }}>
           {this.props.children({...this.props})}
         </div>

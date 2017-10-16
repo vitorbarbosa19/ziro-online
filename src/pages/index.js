@@ -13,15 +13,17 @@ const containerStyle = {
 
 const titleStyle = {
 	textAlign: 'center',
-  fontSize: '24px',
+  fontSize: '28px',
   fontWeight: '600',
   color: 'rgba(48, 62, 77, 0.9)',
-  fontFamily: 'hind vadodara'
+  fontFamily: 'hind vadodara',
+  marginTop: '2.5rem',
+  marginBottom: '0.5rem'
 }
 
 const imageStyle = {
 	borderRadius: '2px',
-  margin: '0'
+  margin: '0 0 7px 0'
 }
 
 const allBrands = [
@@ -36,7 +38,7 @@ const allBrands = [
   'Karmani',
   //'Amissima',
   //'Lovlity',
-  //'Linny',
+  'Linny',
   //'Hush',
   //'Loubucca',
   //'Champagne',
@@ -70,8 +72,8 @@ export default class GalleryAllBrands extends React.Component {
           }).map( (brand, index) => {
             return (
               <Link key={index} to={`/${brand.name.toLowerCase().replace(/\s+/g, '-')}`} >
-                <Image style={imageStyle} cloudName='ziro' width='400' publicId={brand.thumb_id[0]} format='jpg' secure='true' />
                 <h1 style={titleStyle}>{brand.name}</h1>
+                <Image style={imageStyle} cloudName='ziro' width='400' publicId={brand.thumb_id[0]} format='jpg' secure='true' />
               </Link>
             )
           })

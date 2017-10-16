@@ -29,7 +29,9 @@ export default class BrandGallery extends React.Component {
 			<h1 style={{	fontSize: '32px',
   									fontWeight: '600',
   									color: 'rgba(48, 62, 77, 0.9)',
-  									fontFamily: 'hind vadodara'
+  									fontFamily: 'hind vadodara',
+  									marginTop: '2.5rem',
+  									marginBottom: '0.7rem'
   							}}>{this.props.brand}</h1>
 				{this.state.allPhotos ?
 			  	this.state.allPhotos.map( (photo, index) => {
