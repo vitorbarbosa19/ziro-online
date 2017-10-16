@@ -9,7 +9,6 @@ const Header = (props) => (
   <div
     style={{
       background: '#303E4D',
-      marginBottom: '1.45rem',
       position: 'fixed',
       width: '100%'
     }}>
@@ -71,8 +70,7 @@ export default class TemplateWrapper extends React.Component {
           style={{
             margin: '0 auto',
             maxWidth: 400,
-            padding: '0px 0.875rem 1.45rem',
-            paddingTop: '88px',
+            padding: '88px 0px 1.45rem',
           }}>
           {this.props.children({...this.props})}
         </div>

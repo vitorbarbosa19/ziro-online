@@ -4,7 +4,8 @@ import { Image } from 'cloudinary-react'
 import Spinner from './Spinner'
 
 const imageStyle = {
-	borderRadius: '2px'
+	borderRadius: '5px',
+	padding: '0 1%'
 }
 
 export default class BrandGallery extends React.Component {
@@ -30,8 +31,7 @@ export default class BrandGallery extends React.Component {
   									fontWeight: '600',
   									color: 'rgba(48, 62, 77, 0.9)',
   									fontFamily: 'hind vadodara',
-  									marginTop: '2.5rem',
-  									marginBottom: '0.7rem'
+  									margin: '2.5rem 0 1.7rem'
   							}}>{this.props.brand}</h1>
 				{this.state.allPhotos ?
 			  	this.state.allPhotos.map( (photo, index) => {
