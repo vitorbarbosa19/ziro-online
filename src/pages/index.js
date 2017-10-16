@@ -33,14 +33,15 @@ const allBrands = [
   'Blessed',
   //'Innocense',
   //'Ave Rara',
-  //'Karmani',
+  'Karmani',
   //'Amissima',
   //'Lovlity',
   //'Linny',
-  //'Hush',
+  'Hush',
   'Loubucca',
   'Champagne',
-  'Muse'
+  'Muse',
+  'Doce Flor'
 ]
 
 export default class GalleryAllBrands extends React.Component {
