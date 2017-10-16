@@ -28,20 +28,21 @@ const allBrands = [
   'Luzia Fazzolli',
   //'Di Collani',
   //'Unique Chic',
-  'Nuxx',
-  'Donna Ritz',
-  'Blessed',
+  //'Nuxx',
+  //'Donna Ritz',
+  //'Blessed',
   //'Innocense',
   //'Ave Rara',
   'Karmani',
   //'Amissima',
   //'Lovlity',
   //'Linny',
-  'Hush',
-  'Loubucca',
-  'Champagne',
+  //'Hush',
+  //'Loubucca',
+  //'Champagne',
   'Muse',
-  'Doce Flor'
+  'Doce Flor',
+  'Morina'
 ]
 
 export default class GalleryAllBrands extends React.Component {
