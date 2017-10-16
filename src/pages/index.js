@@ -40,7 +40,7 @@ const allBrands = [
   //'Lovlity',
   'Linny',
   //'Hush',
-  //'Loubucca',
+  'Loubucca',
   //'Champagne',
   'Muse',
   'Doce Flor',
