@@ -38,7 +38,7 @@ const linkStyle = {
 
 const allBrands = [
   'Luzia Fazzolli',
-  //'Di Collani',
+  'Di Collani',
   'Unique Chic',
   //'Nuxx',
   'Donna Ritz',
@@ -72,6 +72,9 @@ export default class GalleryAllBrands extends React.Component {
           allBrandsWithThumbs: response
         })
       })
+      .catch( (error) => {
+        console.log(error)
+      })
   }
   render() {
     return (
@@ -80,12 +83,14 @@ export default class GalleryAllBrands extends React.Component {
           this.state.allBrandsWithThumbs.sort( (a, b) => {
             return Date.parse(b.updated_at) - Date.parse(a.updated_at)
           }).map( (brand, index) => {
-            return (
-              <Link style={linkStyle} key={index} to={`/${brand.name.toLowerCase().replace(/\s+/g, '-')}`} >
-                <Image style={imageStyle} cloudName='ziro' width='400' publicId={brand.thumb_id[0]} format='jpg' secure='true' />
-                <h1 style={titleStyle}>{brand.name}</h1>
-              </Link>
-            )
+            if(brand) {
+              return (
+                <Link style={linkStyle} key={index} to={`/${brand.name.toLowerCase().replace(/\s+/g, '-')}`} >
+                  <Image style={imageStyle} cloudName='ziro' width='400' publicId={brand.thumb_id[0]} format='jpg' secure='true' />
+                  <h1 style={titleStyle}>{brand.name}</h1>
+                </Link>
+              )
+            }
           })
         : <Spinner style={{textAlign: 'center'}} />
         }
