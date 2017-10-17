@@ -38,7 +38,7 @@ const linkStyle = {
 
 const allBrands = [
   'Luzia Fazzolli',
-  'Di Collani',
+  //'Di Collani',
   'Unique Chic',
   //'Nuxx',
   'Donna Ritz',
