@@ -54,7 +54,9 @@ const allBrands = [
   'Champagne',
   'Muse',
   'Doce Flor',
-  'Morina'
+  'Morina',
+  'Chocoleite',
+  'La Chocole'
 ]
 
 export default class GalleryAllBrands extends React.Component {
