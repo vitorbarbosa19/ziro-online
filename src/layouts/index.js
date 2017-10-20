@@ -11,7 +11,8 @@ const Header = (props) => (
       background: '#303E4D',
       position: 'fixed',
       zIndex: '1',
-      width: '100%'
+      width: '100%',
+      boxShadow: '0 1px 6px 1px rgba(0,0,0,0.3)'
     }}>
     <div
       style={{
