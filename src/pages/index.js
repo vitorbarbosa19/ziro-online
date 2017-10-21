@@ -43,7 +43,7 @@ const allBrands = [
   'Nuxx',
   'Donna Ritz',
   'Blessed',
-  'Innocense',
+  'Innocence',
   'Ave Rara',
   'Karmani',
   'Amissima',
