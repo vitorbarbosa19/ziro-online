@@ -32,6 +32,18 @@ const Header = (props) => (
         format='png'
         secure='true'
       />
+      {props.page === '/' ? 
+      <Link
+        to="/" 
+        style={{
+          color: '#fff',
+          fontFamily: 'karla',
+          display: 'flex',
+          alignItems: 'center'
+        }}>
+        Catálogo Online
+      </Link> 
+      : null}
       {props.page === '/' ? null : 
       <Link
         to="/" 
