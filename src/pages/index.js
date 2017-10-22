@@ -4,6 +4,9 @@ import cloudinaryApi from '../utils/cloudinaryApi'
 import { Image } from 'cloudinary-react'
 import Spinner from '../components/Spinner'
 
+document.domain = 'ziro.online'
+console.log(document.domain)
+
 const containerStyle = {
 	display: 'flex',
   flexFlow: 'row wrap',
