@@ -56,7 +56,12 @@ const allBrands = [
   'Doce Flor',
   'Morina',
   'Chocoleite',
-  'La Chocole'
+  'La Chocole',
+  'Duplo Sentido',
+  'Poema Hit',
+  'Eva Bella',
+  'Rock Lola',
+  'Esmeral'
 ]
 
 export default class GalleryAllBrands extends React.Component {
