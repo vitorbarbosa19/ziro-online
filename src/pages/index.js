@@ -1,68 +1,15 @@
 import React from 'react'
 import Link from 'gatsby-link'
-import cloudinaryApi from '../utils/cloudinaryApi'
 import { Image } from 'cloudinary-react'
+import cloudinaryApi from '../utils/cloudinaryApi'
+import allBrands from '../utils/allBrands'
 import Spinner from '../components/Spinner'
-
-const containerStyle = {
-	display: 'flex',
-  flexFlow: 'row wrap',
-	justifyContent: 'center',
-}
-
-const titleStyle = {
-	textAlign: 'center',
-  fontSize: '16px',
-  fontWeight: '600',
-  color: '#fff',
-  fontFamily: 'hind vadodara',
-  textTransform: 'uppercase',
-  margin: '-60px 0 20px',
-  backgroundColor: 'rgba(48, 62, 77, 0.7)',
-  position: 'relative',
-  padding: '12px 0',
-  zIndex: '0'
-}
-
-const imageStyle = {
-	borderRadius: '2px',
-  margin: '0',
-  height: '250px',
-  objectFit: 'cover'
-}
-
-const linkStyle = {
-  width: '50%',
-  padding: '0 0.6%'
-}
-
-const allBrands = [
-  'Luzia Fazzolli',
-  'Di Collani',
-  'Unique Chic',
-  'Nuxx',
-  'Donna Ritz',
-  'Blessed',
-  'Innocence',
-  'Ave Rara',
-  'Karmani',
-  'Amissima',
-  'Lovlity',
-  'Linny',
-  'Hush',
-  'Loubucca',
-  'Champagne',
-  'Muse',
-  'Doce Flor',
-  'Morina',
-  'Chocoleite',
-  'La Chocole',
-  'Duplo Sentido',
-  'Poema Hit',
-  'Eva Bella',
-  'Rock Lola',
-  'Esmeral'
-]
+import {
+  containerStyle,
+  titleStyle,
+  imageStyle,
+  linkStyle
+} from '../styles/styles'
 
 export default class GalleryAllBrands extends React.Component {
   constructor(props) {
