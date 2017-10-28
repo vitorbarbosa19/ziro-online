@@ -1,6 +1,8 @@
 import React from 'react'
 import Link from 'gatsby-link'
 import { Image } from 'cloudinary-react'
+import { buttonStyleBright } from '../styles/styles'
+import normalizeTitle from '../utils/normalizeTitle'
 
 export default (props) => (
   <div
@@ -23,7 +25,7 @@ export default (props) => (
       <Image
         style={{margin: '0'}}
         cloudName='ziro' 
-        width='90' 
+        width='85' 
         publicId='logo-original_lork1u'
         version='1508000699'
         format='png'
@@ -35,33 +37,44 @@ export default (props) => (
         style={{
           color: '#fff',
           fontFamily: 'karla',
-          fontSize: '13px',
+          fontSize: '16px',
           display: 'flex',
           alignItems: 'center'
         }}>
-        Catálogo
+          Catálogo
       </Link> 
       : null}
       {props.page === '/' ? null : 
+        <div
+          style={{
+            display: 'flex'
+          }}>
+            <Link
+              to="/" 
+              style={{
+                color: '#fff',
+                fontFamily: 'karla',
+                fontSize: '16px',
+                display: 'flex',
+                alignItems: 'center'
+              }}>
+              <Image
+                style={{margin: '0 3px 0 0'}}
+                cloudName='ziro'
+                width='12'
+                publicId='back-arrow_xdfk21'
+                version='1508000698'
+                format='png'
+                secure='true'
+              />
+                {normalizeTitle(props.page)}
+            </Link>
+        </div>}
       <Link
-        to="/" 
-        style={{
-          color: '#fff',
-          fontFamily: 'karla',
-          display: 'flex',
-          alignItems: 'center'
-        }}>
-        <Image
-          style={{margin: '0 5px 0 0'}}
-          cloudName='ziro'
-          width='14'
-          publicId='back-arrow_xdfk21'
-          version='1508000698'
-          format='png'
-          secure='true'
-        />
-        Voltar
-      </Link>}
+        to="/login" 
+        style={buttonStyleBright}>
+          Login
+      </Link>
     </div>
   </div>
 )

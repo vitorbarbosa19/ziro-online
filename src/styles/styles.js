@@ -30,12 +30,36 @@ export const linkStyle = {
   padding: '0 0.6%'
 }
 
-export const buttonStyle = {
+export const buttonStyleBright = {
   fontSize: '12px',
+  fontFamily: 'karla',
   padding: '5px 18px',
   borderRadius: '25px',
-  backgroundColor: '#ffdd00',
+  background: 'linear-gradient(90deg, #F9D423, #ffdd00)',
   color: '#303e4d',
-  fontWeight: 'bold',
-  boxShadow: '0px 2px 8px 1px rgba(255,216,7,0.2)'
+  fontWeight: '600',
+  boxShadow: '0px 2px 8px 1px rgba(255,216,7,0.1)'
+}
+
+export const buttonStyleDark = {
+  fontSize: '12px',
+  fontFamily: 'karla',
+  padding: '5px 18px',
+  borderRadius: '25px',
+  background: '#303e4d',
+  color: '#FFF',
+  fontWeight: '600',
+  boxShadow: '0px 2px 6px 1px rgba(0,0,0,0.1)'
+}
+
+export const buttonStyleGhost = {
+  fontSize: '12px',
+  fontFamily: 'karla',
+  padding: '5px 18px',
+  borderRadius: '25px',
+  background: 'none',
+  border: '1px solid #303e4d',
+  color: '#303e4d',
+  fontWeight: '600',
+  boxShadow: '0px 2px 6px 1px rgba(0,0,0,0.1)'
 }

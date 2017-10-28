@@ -27,12 +27,6 @@ export default class BrandGallery extends React.Component {
 		const whatsappLink = 'whatsapp://send?phone=5511996454922&text=https://res.cloudinary.com/ziro/image/upload/v'
 		return (
 			<div style={{textAlign: 'center'}}>
-			<h1 style={{	fontSize: '32px',
-  									fontWeight: '600',
-  									color: 'rgba(48, 62, 77, 0.9)',
-  									fontFamily: 'hind vadodara',
-  									margin: '2.5rem 0 1.7rem'
-  							}}>{this.props.brand}</h1>
 				{this.state.allPhotos ?
 			  	this.state.allPhotos.map( (photo, index) => {
 			  		return ( 

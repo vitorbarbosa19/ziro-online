@@ -17,7 +17,7 @@ export default class TemplateWrapper extends React.Component {
             { name: 'keywords', content: 'atacado, bom retiro, moda' },
           ]}
         />
-        <HeaderLoggedIn page={this.props.location.pathname}/>
+        <HeaderLoggedOut page={this.props.location.pathname}/>
         <div
           className='home-container'
           style={{
@@ -27,7 +27,7 @@ export default class TemplateWrapper extends React.Component {
           }}>
           {this.props.children({...this.props})}
         </div>
-        <Footer />
+        <Footer page={this.props.location.pathname}/>
       </div>
     )
   }
