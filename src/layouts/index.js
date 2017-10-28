@@ -1,72 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
-import { Image } from 'cloudinary-react'
+import HeaderLoggedIn from '../components/HeaderLoggedIn'
+import HeaderLoggedOut from '../components/HeaderLoggedOut'
+import Footer from '../components/Footer'
 import './index.css'
-
-const Header = (props) => (
-  <div
-    style={{
-      background: '#303E4D',
-      position: 'fixed',
-      zIndex: '1',
-      width: '100%',
-      boxShadow: '0 1px 6px 1px rgba(0,0,0,0.3)'
-    }}>
-    <div
-      style={{
-        margin: '0 auto',
-        maxWidth: 400,
-        padding: '1.45rem 1.0875rem',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center'
-      }}>
-      <Image
-        style={{margin: '0'}}
-        cloudName='ziro' 
-        width='90' 
-        publicId='logo-original_lork1u'
-        version='1508000699'
-        format='png'
-        secure='true'
-      />
-      {props.page === '/' ? 
-      <Link
-        to="/" 
-        style={{
-          color: '#fff',
-          fontFamily: 'karla',
-          display: 'flex',
-          alignItems: 'center'
-        }}>
-        Catálogo Online
-      </Link> 
-      : null}
-      {props.page === '/' ? null : 
-      <Link
-        to="/" 
-        style={{
-          color: '#fff',
-          fontFamily: 'karla',
-          display: 'flex',
-          alignItems: 'center'
-        }}>
-        <Image
-          style={{margin: '0 5px 0 0'}}
-          cloudName='ziro'
-          width='14'
-          publicId='back-arrow_xdfk21'
-          version='1508000698'
-          format='png'
-          secure='true'
-        />
-        Voltar
-      </Link>}
-    </div>
-  </div>
-)
 
 export default class TemplateWrapper extends React.Component {
   render() {
@@ -79,15 +17,17 @@ export default class TemplateWrapper extends React.Component {
             { name: 'keywords', content: 'atacado, bom retiro, moda' },
           ]}
         />
-        <Header page={this.props.location.pathname}/>
+        <HeaderLoggedIn page={this.props.location.pathname}/>
         <div
+          className='home-container'
           style={{
-            margin: '0 auto',
+            margin: '0 auto 35px',
             maxWidth: 400,
-            padding: '88px 0px 1.45rem',
+            padding: '98px 0px 1.45rem',
           }}>
           {this.props.children({...this.props})}
         </div>
+        <Footer />
       </div>
     )
   }
