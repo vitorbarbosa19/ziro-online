@@ -27,7 +27,7 @@ export default class TemplateWrapper extends React.Component {
           }}>
           {this.props.children({...this.props})}
         </div>
-        <Footer page={this.props.location.pathname}/>
+        {/*<Footer page={this.props.location.pathname}/>*/}
       </div>
     )
   }

@@ -16,8 +16,8 @@ export default (props) =>
 	        style={{margin: '0 auto'}}
 	        cloudName='ziro' 
 	        width='85' 
-	        publicId='access-icon_yequ2m'
-	        version='1509234807'
+	        publicId='access-icon-new_ddibg9'
+	        version='1509250208'
 	        format='png'
 	        secure='true'
 	      />
@@ -37,7 +37,7 @@ export default (props) =>
 	  		</li>
 	  	</ul>
 	  	<p>
-	  		Basta preencher um rápido formulário de cadastro e aguardar a validação do CNPJ pelo sistema.
+	  		Basta preencher um rápido formulário de cadastro. Inicie abaixo!
 	  	</p>
 	  	<div 
 	  		style={{
@@ -47,7 +47,7 @@ export default (props) =>
 		  		<Link style={buttonStyleDark}>
 		  			Cadastrar CNPJ
 		  		</Link>
-		  		<Link style={buttonStyleGhost}>
+		  		<Link to='/login' style={buttonStyleGhost}>
 		  			Retornando? Fazer login
 		  		</Link>
 	  	</div>
