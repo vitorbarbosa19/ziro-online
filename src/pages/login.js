@@ -7,6 +7,10 @@ export default class Login extends React.Component {
 		this.state = {
 			user: null
 		}
+		this.login = this.login.bind(this)
+		this.logout = this.logout.bind(this)
+	}
+	componentDidMount() {
 		this.widget = new OktaSignIn({
 		  baseUrl: process.env.OKTA_URL,
 		  redirectUri: process.env.OKTA_REDIRECT_UIR,
@@ -18,10 +22,6 @@ export default class Login extends React.Component {
 		  	registration: true
 		  }
 		})
-		this.login = this.login.bind(this)
-		this.logout = this.logout.bind(this)
-	}
-	componentDidMount() {
 		this.widget.session.get( (response) => {
 			if(response.status !== 'INACTIVE') {
 				this.setState({
