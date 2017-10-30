@@ -24,5 +24,10 @@ export default [
   'Eva Bella',
   'Rock Lola',
   'Esmeral',
-  'Lucky You'
+  'Lucky You',
+  'Coinage',
+  'Kesses',
+  'Lady Rock',
+  'Limone',
+  'Talgui'
 ]
