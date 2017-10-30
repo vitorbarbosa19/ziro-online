@@ -1,6 +1,7 @@
 /*************************/
 /*************************/
 /*-------My styles-------*/
+
 a {
   text-decoration: none;
   color: #333;
@@ -10,6 +11,80 @@ a {
   .home-container {
     padding-top: 88px !important;
   }
+}
+
+/*-------Okta Widget-------*/
+
+.primary-auth {
+  text-align: center;
+}
+
+.o-form-content {
+  font-family: 'karla';
+  font-size: 14px;
+  margin: 20px 0;
+}
+
+.primary-auth h2 {
+  font-family: 'hind vadodara';
+}
+
+#okta-signin-username, #okta-signin-password {
+  -webkit-appearance: none;
+  font-family: 'karla';
+  font-size: 12px;
+  width: 200px;
+  text-align: center;
+  margin: 8px 0;
+  padding: 6px;
+  border-radius: 2px;
+  border: 1px solid rgba(48, 62, 77, 0.9);
+  z-index: 0;
+  background-color: #fff;
+  color: rgba(48, 62, 77, 0.75);
+  box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.1);
+}
+#okta-signin-submit {
+  -webkit-appearance: none;
+  font-size: 14px;
+  font-family: 'karla';
+  padding: 8px 28px;
+  border: none;
+  border-radius: 25px;
+  background: #303e4d;
+  color: #FFF;
+  font-weight: 600;
+  box-shadow: 0px 2px 6px 1px rgba(0,0,0,0.1);
+}
+
+.custom-checkbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-checkbox input {
+  -webkit-appearance: none;
+  padding: 4px;
+  border: 1px solid rgba(48, 62, 77, 0.9);
+  border-radius: 1px;
+  box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.1);
+  margin-right: 3px;
+}
+
+.custom-checkbox input:checked {
+  background: rgba(48, 62, 77, 0.9);;
+  outline: 1px solid #FFF;
+  outline-offset: -2px;
+}
+
+.okta-form-infobox-error.infobox.infobox-error {
+  color: #F17F42;
+}
+
+p.okta-form-input-error.o-form-input-error.o-form-explain {
+  color: #F17F42;
+  margin-bottom: 5px !important;
 }
 
 /*************************/

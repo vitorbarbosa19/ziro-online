@@ -18,15 +18,15 @@ export default class TemplateWrapper extends React.Component {
           ]}
         />
         <HeaderLoggedOut page={this.props.location.pathname}/>
-        <div
-          className='home-container'
-          style={{
-            margin: '0 auto 35px',
-            maxWidth: 400,
-            padding: '98px 0px 1.45rem',
+          <div
+            className='home-container'
+            style={{
+              margin: '0 auto 35px',
+              maxWidth: 400,
+              padding: '98px 0px 1.45rem',
           }}>
-          {this.props.children({...this.props})}
-        </div>
+            {this.props.children({...this.props})}
+          </div>
         {/*<Footer page={this.props.location.pathname}/>*/}
       </div>
     )
