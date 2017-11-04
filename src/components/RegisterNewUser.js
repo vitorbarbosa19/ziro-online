@@ -23,8 +23,8 @@ export default (props) => (
       :
         <div>
           <UserOrientationLeads />
-          <hr />
-          <h2 style={{fontFamily: 'hind vadodara'}}>Cadastro</h2>
+          <hr style={{width: '80%', margin: '0 auto 20px'}} />
+          <h2 style={{fontFamily: 'hind vadodara'}}>Cadastro de Usuário</h2>
           <FormLeads
           	handleForm={props.handleForm}
           	handleSubmit={props.handleSubmit}

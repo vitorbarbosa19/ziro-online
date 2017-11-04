@@ -1,8 +1,8 @@
 import React from 'react'
-import Link from 'gatsby-link'
 import { Image } from 'cloudinary-react'
 import OktaSignIn from '@okta/okta-signin-widget'
-import { buttonStyleDark } from '../styles/styles'
+import UserHelpLogin from '../components/UserHelpLogin'
+import TellUserHeIsLogged from '../components/TellUserHeIsLogged'
 
 export default class Login extends React.Component {
 	constructor(props) {
@@ -70,41 +70,17 @@ export default class Login extends React.Component {
 		return (
 			<div>
 				{this.state.userId ?
-						<div 
-							style={{
-								display: 'flex',
-								flexDirection: 'column',
-								alignItems: 'center'
-							}}>
-								<p 
-									style={{
-										fontFamily: 'karla',
-										margin: '20px 0 0'
-									}}>
-										Você está logado na conta:
-								</p>
-								<p 
-									style={{
-										fontFamily: 'karla',
-										fontSize: '14px',
-										color: '#303e4d',
-										margin: '10px 0 20px'
-									}}>
-										{this.state.userLogin}
-								</p>
-								<a
-									href='#'
-									style={buttonStyleDark}
-									onClick={this.logout}>
-										Logout
-								</a>
-						</div>
+						<TellUserHeIsLogged
+							userLogin={this.state.userLogin}
+							logout={this.logout}
+						/>
 					:
 						null
 				}
 				{this.state.userId ?
 						null
 					:
+						//show Okta's login container
 		        <div 
 		        	style={{
 		        		display: 'flex', 
@@ -126,21 +102,7 @@ export default class Login extends React.Component {
 				{this.state.userId ?
 						null
 					:
-						<p 
-							style={{
-								fontFamily: 'karla',
-								fontSize: '14px',
-								textAlign: 'center'
-							}}>
-								Primeira vez?&nbsp;
-								<Link 
-									to='/cadastro'
-									style={{
-										fontWeight: '700',
-									}}>
-										Faça seu cadastro
-								</Link>
-						</p>
+						<UserHelpLogin />
 				}
 			</div>
 		)

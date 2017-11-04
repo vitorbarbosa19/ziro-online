@@ -24,7 +24,7 @@ export default (props) => (
         }}>
         {/*---Logo---*/}
           <Image
-            style={{margin: '0'}}
+            style={{margin: '0 0 0 12px'}}
             cloudName='ziro' 
             width='85' 
             publicId='logo-original_lork1u'
@@ -136,8 +136,7 @@ export default (props) => (
           <Link 
             to='/login'
             style={{
-              marginTop: '30px',
-              marginBottom: '10px',
+              margin: '30px 12px 10px 0',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center'
@@ -158,7 +157,7 @@ export default (props) => (
                   fontSize: '11px',
                   margin: '0',
                 }}>
-                  {sessionStorage.getItem('userLogin').replace(/@gmail.com/, '')}
+                  Meu perfil
               </p>
           </Link>
       </div>

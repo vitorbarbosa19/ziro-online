@@ -15,7 +15,7 @@ export default (props) => (
     }}>
     <div
       style={{
-        margin: '0 auto',
+        margin: '5px auto',
         maxWidth: 400,
         padding: '1.45rem 1.0875rem',
         display: 'flex',

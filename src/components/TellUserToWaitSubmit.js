@@ -4,7 +4,7 @@ import Spinner from './Spinner'
 export default (props) => (
   <div
     style={{
-      marginTop: '20px',
+      margin: '20px 20px 0',
       fontFamily: 'karla',
       fontSize: '16px',
       textAlign: 'center'

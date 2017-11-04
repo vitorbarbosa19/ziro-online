@@ -15,7 +15,8 @@
     "gatsby-plugin-google-fonts": "0.0.3",
     "gatsby-plugin-manifest": "^1.0.8",
     "gatsby-plugin-react-helmet": "^1.0.5",
-    "react-router-dom": "^4.2.2"
+    "react-router-dom": "^4.2.2",
+    "react-tooltip": "^3.4.0"
   },
   "keywords": [
     "atacado",
