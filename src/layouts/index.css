@@ -13,6 +13,28 @@ a {
   }
 }
 
+/*-------Lead form radio buttons-------*/
+
+.lead-form-input-radio {
+  -webkit-appearance: none;
+  border: 1px solid #303e4d;
+  width: 12px;
+  height: 12px;
+}
+
+.lead-form-input-radio:checked {
+  background-color: #303e4d;
+  outline: 1px solid #FFF;
+  outline-offset: -2px;
+}
+
+/*-------Nav links decoration-------*/
+
+.nav-link-active {
+  padding: 5px 0;
+  border-bottom: 1px solid #fff;
+}
+
 /*-------Okta Widget-------*/
 
 .primary-auth {
@@ -22,11 +44,13 @@ a {
 .o-form-content {
   font-family: 'karla';
   font-size: 14px;
-  margin: 20px 0;
+  margin: 0 0 20px;
 }
 
 .primary-auth h2 {
+  display: none;
   font-family: 'hind vadodara';
+  margin: 0;
 }
 
 #okta-signin-username, #okta-signin-password {

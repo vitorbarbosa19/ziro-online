@@ -30,6 +30,34 @@ export const linkStyle = {
   padding: '0 0.6%'
 }
 
+export const inputStyle = {
+  WebkitAppearance: 'none',
+  fontSize: '13px',
+  width: '200px',
+  textAlign: 'center',
+  textAlignLast: 'center',
+  margin: '8px 0',
+  padding: '6px',
+  borderRadius: '2px',
+  border: '1px solid rgba(48, 62, 77, 0.9)',
+  zIndex: '0',
+  backgroundColor: '#fff',
+  color: 'rgba(48, 62, 77, 0.75)',
+  boxShadow: '0px 2px 6px 0px rgba(0,0,0,0.1)'
+}
+
+export const radioFormStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'start',
+}
+
+export const labelStyle = {
+  marginTop: '70px',
+  marginBottom: '10px',
+  fontSize: '18px'
+}
+
 export const buttonStyleBright = {
   fontSize: '12px',
   fontFamily: 'karla',

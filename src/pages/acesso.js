@@ -44,11 +44,15 @@ export default (props) =>
 	  			display: 'flex',
 	  			justifyContent: 'space-between',
 		  	}}>
-		  		<Link style={buttonStyleDark}>
-		  			Cadastrar CNPJ
+		  		<Link 
+		  			to='/cadastro'
+		  			style={buttonStyleDark}>
+		  				Cadastrar CNPJ
 		  		</Link>
-		  		<Link to='/login' style={buttonStyleGhost}>
-		  			Retornando? Fazer login
+		  		<Link 
+		  			to='/login'
+		  			style={buttonStyleGhost}>
+		  				Retornando? Fazer login
 		  		</Link>
 	  	</div>
   </div>

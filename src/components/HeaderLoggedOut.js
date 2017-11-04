@@ -70,11 +70,13 @@ export default (props) => (
                 {normalizeTitle(props.page)}
             </Link>
         </div>}
-      {/*<Link
-        to="/login" 
-        style={buttonStyleBright}>
-          Login
-      </Link>*/}
+      {props.page === '/login' ? null :
+        <Link
+          to="/login" 
+          style={buttonStyleBright}>
+            Login
+        </Link>
+      }
     </div>
   </div>
 )
