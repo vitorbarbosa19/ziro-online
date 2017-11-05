@@ -73,8 +73,8 @@ export default class Cadastro extends React.Component {
 				this.setState({
 					loadingCNPJ: false,
 					errorValidatingCNPJ: true,
+					errorNetwork: true
 				})
-				error === 'Error: Network Error' ? this.setState({ errorNetwork: true }) : null
 			})
 	}
 	handleForm(event) {

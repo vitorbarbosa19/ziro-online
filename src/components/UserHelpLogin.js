@@ -26,8 +26,7 @@ export default (props) => (
             data-tip='Seu nome de usuário é o seu email completo. Sua senha é o seu CNPJ, apenas números.'>
               Clique aqui e veja como acessar
           </span>
-          <ReactTooltip effect='solid' />
-      </p>                
+      </p>         
       <p>
           Não tem cadastro?&nbsp;
           <Link 
@@ -38,5 +37,6 @@ export default (props) => (
               Clique aqui para iniciar
           </Link>
       </p>
+      <ReactTooltip effect='solid' />
   </div>
 )

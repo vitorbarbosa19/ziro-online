@@ -22,13 +22,13 @@ export default (props) => (
         secure='true'
       />
       {props.errorNetwork ?
-        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '0 10px'}}>
           <p>Estamos enfrentando instabilidade em nosso sistema.</p>
           <p>Lamentamos o incoveniente.</p>
           <p>Por favor aguarde alguns minutos e tente validar seu CNPJ novamente.</p>
         </div>
       :        
-        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '0 10px'}}>
           <p>Infelizmente, nosso sistema detectou um erro durante a validação do seu CNPJ.</p>
           <p>Lembramos que <strong>não é possível</strong> se cadastrar usando um número de CPF.</p>
           <p>Se acredita que seu CNPJ é do <strong>ramo certo</strong> e não houve erro de preenchimento do formulário, mande um Whatsapp para a gente.</p>

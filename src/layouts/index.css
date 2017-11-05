@@ -35,6 +35,15 @@ a {
   border-bottom: 1px solid #fff;
 }
 
+/*-------Login tooltip decoration-------*/
+
+.__react_component_tooltip.show.place-top.type-dark {
+  left: 2.5% !important;
+  width: 95% !important;
+  opacity: 1 !important;
+  background-color: #303e4d !important;
+}
+
 /*-------Okta Widget-------*/
 
 .primary-auth {
