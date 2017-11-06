@@ -5,6 +5,8 @@ import ReactGA from 'react-ga'
 import OktaSignIn from '@okta/okta-signin-widget'
 import HeaderLoggedIn from '../components/HeaderLoggedIn'
 import HeaderLoggedOut from '../components/HeaderLoggedOut'
+import UserAlreadyRegistered from '../components/UserAlreadyRegistered'
+import TellUserHeNeedsToRegister from '../components/TellUserHeNeedsToRegister'
 import Footer from '../components/Footer'
 import './index.css'
 
@@ -24,12 +26,10 @@ export default class TemplateWrapper extends React.Component {
       },
       language: 'pt-BR'
     })
+    this.updateUserFromLoginPage = this.updateUserFromLoginPage.bind(this)
+    this.logoutFromLoginPage = this.logoutFromLoginPage.bind(this)
     //call function to fire google analytics on page load, once
     this.onPageChange(props.location.pathname)
-    this.method = this.method.bind(this)
-  }
-  method() {
-    alert('works')
   }
   componentWillReceiveProps(nextProps) {
     //call function to fire google analytics when path changes
@@ -39,23 +39,48 @@ export default class TemplateWrapper extends React.Component {
   onPageChange(pathname) {
     // initialize google analytics
     ReactGA.initialize('UA-109221012-1')
-    //verify if user is logged in
-    this.widget.session.get( (response) => {
-      if(response.status !== 'INACTIVE') {
-    //if he is, associate the pageview with this userId and send a pageview
-        ReactGA.set({ userId: response.userId })
-        ReactGA.pageview(pathname)
-    //initiate a session storage and set state to reuse userId where necessary
-        if(sessionStorage.getItem('userId') === null) {
-          sessionStorage.setItem('userId', response.userId)
-          sessionStorage.setItem('userLogin', response.login)
-          this.setState({ userId: response.userId })
+    // check if user is not in the login page
+    if(pathname !== '/login') {
+      //verify if user is logged in
+      this.widget.session.get( (response) => {
+        if(response.status !== 'INACTIVE') {
+          //if he is, associate the pageview with this userId and send a pageview to google analytics
+          ReactGA.set({ userId: response.userId })
+          ReactGA.pageview(pathname)
+          //initiate a session storage and set state to reuse userId where necessary
+          if(sessionStorage.getItem('userId') === null) {
+            sessionStorage.setItem('userId', response.userId)
+            this.setState({ userId: response.userId })
+          }
+          else
+            this.setState({ userId: sessionStorage.getItem('userId') })
         }
-        else
-          this.setState({ userId: sessionStorage.getItem('userId') })
+        else {
+          this.setState({ userId: null }, () => {
+            sessionStorage.removeItem('userId')
+            ReactGA.pageview(pathname)  
+          })
+        }
+      })
+    }
+    else {
+      if(this.state.userId !== null) {
+        ReactGA.set({ userId: this.state.userId })
+        ReactGA.pageview(pathname)
       }
       else
-        ReactGA.pageview(pathname)
+       ReactGA.pageview(pathname) 
+   }
+  }
+  updateUserFromLoginPage(userId) {
+    this.setState({ userId: userId }, () => {
+      sessionStorage.setItem('userId', userId)
+    })
+  }
+  logoutFromLoginPage() {
+    this.setState({ userId: null }, () => {
+      sessionStorage.removeItem('userId')
+      this.props.history.push('/')
     })
   }
   render() {
@@ -79,7 +104,27 @@ export default class TemplateWrapper extends React.Component {
             maxWidth: 400,
             padding: '98px 0px 1.45rem',
           }}>
-            {this.props.children({...this.props, ...this.state, method: this.method})}
+            {this.props.location.pathname === '/precos' ?
+              this.state.userId ? 
+                this.props.children({...this.props, updateUserFromLoginPage: this.updateUserFromLoginPage, logoutFromLoginPage: this.logoutFromLoginPage})  
+              :
+                <TellUserHeNeedsToRegister />
+            :
+              null
+            }
+            {this.props.location.pathname === '/cadastro' ?
+              this.state.userId ? 
+                <UserAlreadyRegistered />
+              :
+                this.props.children({...this.props, updateUserFromLoginPage: this.updateUserFromLoginPage, logoutFromLoginPage: this.logoutFromLoginPage})  
+            :
+              null
+            }
+            {this.props.location.pathname !== '/cadastro' && this.props.location.pathname !== '/precos' ?
+              this.props.children({...this.props, updateUserFromLoginPage: this.updateUserFromLoginPage, logoutFromLoginPage: this.logoutFromLoginPage})
+            :
+              null
+            }
         </div>
         {this.state.userId || this.props.location.pathname === '/login' || this.props.location.pathname === '/cadastro' ? 
           null 

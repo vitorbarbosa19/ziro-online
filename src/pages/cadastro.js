@@ -169,28 +169,22 @@ export default class Cadastro extends React.Component {
 										{this.state.errorValidatingCNPJ ?
 											<TellUserErrorOccurredCNPJ errorNetwork={this.state.errorNetwork} />
 										:
-											<div>
-												{sessionStorage.getItem('userId') ? 
-												  <UserAlreadyRegistered />
-												:
-										      <RegisterNewUser 
-										      	handleCNPJ={this.handleCNPJ}
-										      	verifyCNPJ={this.verifyCNPJ}
-										      	handleForm={this.handleForm}
-										      	handleSubmit={this.handleSubmit}
-										      	cnpjValidated={this.state.cnpjValidated}
-										      	CNPJ={this.state.CNPJ}
-										      	firstName={this.state.firstName}
-										      	lastName={this.state.lastName}
-										      	email={this.state.email}
-										      	whatsapp={this.state.whatsapp}
-														hasStore={this.state.hasStore}
-														maxPay={this.state.maxPay}
-														referral={this.state.referral}
-														when={this.state.when}
-										      />
-												}
-											</div>
+								      <RegisterNewUser 
+								      	handleCNPJ={this.handleCNPJ}
+								      	verifyCNPJ={this.verifyCNPJ}
+								      	handleForm={this.handleForm}
+								      	handleSubmit={this.handleSubmit}
+								      	cnpjValidated={this.state.cnpjValidated}
+								      	CNPJ={this.state.CNPJ}
+								      	firstName={this.state.firstName}
+								      	lastName={this.state.lastName}
+								      	email={this.state.email}
+								      	whatsapp={this.state.whatsapp}
+												hasStore={this.state.hasStore}
+												maxPay={this.state.maxPay}
+												referral={this.state.referral}
+												when={this.state.when}
+								      />
 										}
 									</div>
 								}

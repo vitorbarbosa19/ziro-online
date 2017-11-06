@@ -25,14 +25,23 @@ export default class Login extends React.Component {
 		  language: 'pt-BR'
 		})
 		this.widget.session.get( (response) => {
+			//check if user is active on Okta's database
 			if(response.status !== 'INACTIVE') {
+				this.props.updateUserFromLoginPage(response.userId, response.login)
 				this.setState({
-					userId: response.id,
+					userId: response.userId,
 					userLogin: response.login
 				})
 			}
-			else
-				this.login()
+			else {
+				this.setState({
+					userId: null,
+					userLogin: null
+				}, () => {
+					sessionStorage.removeItem('userId')
+					this.login()
+				})
+			}
 		})
 	}
 	login() {
@@ -41,13 +50,13 @@ export default class Login extends React.Component {
 			el: this.loginContainer
 			},
 			(response) => {
+				this.props.updateUserFromLoginPage(response.claims.idp, response.claims.email)
 				this.setState({
 					userId: response.claims.idp,
 					userLogin: response.claims.email
+				}, () => {
+					this.props.history.push('/')
 				})
-				sessionStorage.setItem('userId', response.claims.idp)
-				sessionStorage.setItem('userLogin', response.claims.email)
-				this.props.history.push('/') //redirects user by changing browser history
 			},
 			(error) => {
 				console.log(error)
@@ -56,15 +65,9 @@ export default class Login extends React.Component {
 	}
 	logout(event) {
 		event.preventDefault()
-		sessionStorage.removeItem('userId')
-		sessionStorage.removeItem('userLogin')
 		this.widget.signOut( () => {
-			this.setState({
-				userId: null,
-				userLogin: null
-			})
+			this.props.logoutFromLoginPage()
 		})
-		this.props.history.push('/') //redirects user by changing browser history
 	}
 	render() {
 		return (
