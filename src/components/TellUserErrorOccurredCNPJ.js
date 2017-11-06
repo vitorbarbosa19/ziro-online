@@ -24,8 +24,8 @@ export default (props) => (
       {props.errorNetwork ?
         <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '0 10px'}}>
           <p>Estamos enfrentando instabilidade em nosso sistema.</p>
-          <p>Lamentamos o incoveniente.</p>
-          <p>Por favor aguarde alguns minutos e tente validar seu CNPJ novamente.</p>
+          <p>Lamentamos o inconveniente.</p>
+          <p>Por favor, aguarde alguns minutos e tente validar seu CNPJ novamente.</p>
         </div>
       :        
         <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '0 10px'}}>

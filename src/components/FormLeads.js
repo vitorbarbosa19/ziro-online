@@ -154,7 +154,7 @@ export default (props) => (
       {props.referral === 'Já sou cliente' ? 
         null 
       :
-        <label style={labelStyle}>Em quanto tempo pretende comprar peças?</label>
+        <label style={labelStyle}>Quando pretende comprar?</label>
       }
       {props.referral === 'Já sou cliente' ? 
         null 

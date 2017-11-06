@@ -16,20 +16,23 @@ export default class TemplateWrapper extends React.Component {
     this.state = {
       userId: null
     }
-    //initialize Okta widget to allow fetching users from Okta's database
-    this.widget = new OktaSignIn({
-      baseUrl: process.env.OKTA_URL,
-      redirectUri: process.env.OKTA_REDIRECT_URI,
-      clientId: process.env.OKTA_CLIENT_ID,
-      authParams: {
-        responseType: 'id_token'
-      },
-      language: 'pt-BR'
-    })
+    //don't run Okta's initializer on server render
+    if(typeof window !== 'undefined') {
+      //initialize Okta widget to allow fetching users from Okta's database
+      this.widget = new OktaSignIn({
+        baseUrl: process.env.OKTA_URL,
+        redirectUri: process.env.OKTA_REDIRECT_URI,
+        clientId: process.env.OKTA_CLIENT_ID,
+        authParams: {
+          responseType: 'id_token'
+        },
+        language: 'pt-BR'
+      })
+      //call function to fire google analytics on page load, once
+      this.onPageChange(props.location.pathname)
+    }
     this.updateUserFromLoginPage = this.updateUserFromLoginPage.bind(this)
     this.logoutFromLoginPage = this.logoutFromLoginPage.bind(this)
-    //call function to fire google analytics on page load, once
-    this.onPageChange(props.location.pathname)
   }
   componentWillReceiveProps(nextProps) {
     //call function to fire google analytics when path changes

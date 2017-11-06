@@ -30,14 +30,14 @@ export default (props) =>
 	  			Ver a faixa de preços (mínimo e máximo) e o valor médio praticado por cada marca;
 	  		</li>
 	  		<li>
-	  			Consultar nossos assessores para saber sobre grade e preço individuais das peças;
+	  			Consultar nossos assessores sobre grade e preço de cada peça;
 	  		</li>
 	  		<li>
-	  			Efetuar um pedido à distância, direto do seu celular, com simplicidade e conforto.
+	  			Efetuar pedidos à distância, direto do seu celular, sem precisar viajar.
 	  		</li>
 	  	</ul>
 	  	<p>
-	  		Basta preencher um rápido formulário de cadastro. Inicie abaixo!
+	  		Faça seu cadastro e inicie agora mesmo.
 	  	</p>
 	  	<div 
 	  		style={{
