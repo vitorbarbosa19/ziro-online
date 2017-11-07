@@ -16,8 +16,8 @@ export default (props) =>
 	        style={{margin: '0 auto'}}
 	        cloudName='ziro' 
 	        width='85' 
-	        publicId='access-icon-new_ddibg9'
-	        version='1509250208'
+	        publicId='access-icon-new_eyu328'
+	        version='1510008753'
 	        format='png'
 	        secure='true'
 	      />

@@ -1,15 +1,26 @@
 import React from 'react'
-import Link from 'gatsby-link'
 import { Image } from 'cloudinary-react'
 import { header, rows } from '../utils/brandPricesTable'
-import { buttonStyleDark } from '../styles/styles'
+import routeExistsForBrand from '../utils/routeExistsForBrand'
+import PriceTableRow from '../components/PriceTableRow'
 
 export default (props) => (
 	<ul style={{
-		margin: '20px 15px'
+		margin: '10px 35px',
+		textAlign: 'center'
 	}}>
+		<Image
+	    style={{margin: '0 auto 35px'}}
+	    cloudName='ziro' 
+	    width='85' 
+	    publicId='price-icon_ijxlwu'
+	    version='1510007822'
+	    format='png'
+	    secure='true'
+	  />
 	{/*---Table Header---*/}
 		<li style={{
+			listStyle: 'none',
 			display: 'flex',
 			textAlign: 'right',
 			fontFamily: 'hind vadodara',
@@ -23,7 +34,7 @@ export default (props) => (
 			{header.map( (columnTitle, index) => {
 				if (index < 4)
 					return (
-						<div className={ index === 0 ? 'list-style-align-left' : 'list-style-align-right' }>
+						<div key={index} className={ index === 0 ? 'list-style-align-left' : 'list-style-align-right' }>
 							{columnTitle}
 						</div>
 					)
@@ -32,21 +43,36 @@ export default (props) => (
 			})}
 		</li>
 	{/*---Table Data--*/}
-		{rows.sort().map( (brand) => {
+		{rows.sort().map( (brand, brandIndex) => {
 			return	(
-  			<li style={{
-	  			display: 'flex',
-	  			textAlign: 'right',
-	    		fontFamily: 'karla',
-					fontSize: '13px'
+  			<li 
+  				key={brandIndex}
+  				style={{
+  					listStyle: 'none',
+	  				display: 'flex',
+	  				textAlign: 'right',
+	    			fontFamily: 'karla',
+						fontSize: '13px'
 	  		}}> 
   				{brand.map( (brandInfo, index) => {
-  					if(index < 4)
-  						return (
-								<div className={ index === 0 ? 'list-style-align-left' : 'list-style-align-right' }>
-  								{brandInfo.replace(/\$/,'').replace(/\,/, '').replace(/\./, ',')}
-  							</div>
-  						)
+  					if(index < 4) {
+  						if(routeExistsForBrand(brand[0]))
+  							return (
+  								<PriceTableRow 
+										routeToBrand={`/${brand[0].replace(/\s/, '-').toLowerCase()}`}
+										brandInfo={brandInfo}
+										index={index}
+									/>
+								)
+  						else
+	  						return ( 
+	  							<PriceTableRow 
+										routeToBrand={'/precos/#'}
+										brandInfo={brandInfo}
+										index={index}
+									/>
+								)
+  					}
   					else
   						return null
   				})} 
