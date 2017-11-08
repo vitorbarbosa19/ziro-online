@@ -105,7 +105,7 @@ export default class TemplateWrapper extends React.Component {
           style={{
             margin: '0 auto 35px',
             maxWidth: '400px',
-            padding: '78px 0px 1.45rem',
+            padding: '7px 0px 1.45rem',
           }}>
             {/\/precos\/?/.test(this.props.location.pathname) === true ?
               this.state.userId ? 
@@ -129,7 +129,7 @@ export default class TemplateWrapper extends React.Component {
               null
             }
         </div>
-        {this.state.userId || /\/login\/?/.test(this.props.location.pathname) === true || /\/cadastro\/?/.test(this.props.location.pathname) === true ? 
+        {this.state.userId || /(\/login\/?)|(\/cadastro\/?)|(\/404\/?)/.test(this.props.location.pathname) ? 
           null 
         :
           <Footer page={this.props.location.pathname} />

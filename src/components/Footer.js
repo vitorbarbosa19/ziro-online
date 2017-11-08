@@ -14,7 +14,7 @@ export default (props) => (
 		  		justifyContent: 'center',
 		  		alignItems: 'center',
 		  		fontSize: '13px',
-		  		fontFamily: 'karla',
+		  		fontFamily: 'hind vadodara',
 		  		color: '#fff',
 		  		backgroundColor: 'rgba(48, 62, 77, 0.95)',
 		  		padding: '12px 0',

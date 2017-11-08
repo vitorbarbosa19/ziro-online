@@ -25,7 +25,7 @@ export default (props) => (
         <p>Infelizmente, nosso sistema apresentou um erro durante o envio do seu cadastro.</p>
         <p>Lamentamos muito o inconveniente.</p>
         <p>Sugerimos que tente enviar o formulário novamente mais tarde.</p>
-        <p>Se continuar encontrando problemas, mande um Whatsapp pra gente: <strong><a style={{textDecoration: 'underline'}} href='tel:-55-11-98176-8088'>(11) 98176-8088</a></strong></p>
+        <p>Se continuar encontrando problemas, mande um Whatsapp pra gente: <strong><a style={{textDecoration: 'underline'}} href='tel:-11-98176-8088'>(11) 98176-8088</a></strong></p>
       </div>
       <a style={buttonStyleDark} href='#' onClick={props.handleGoBack}>Voltar</a>
   </div>

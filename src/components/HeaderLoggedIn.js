@@ -1,16 +1,14 @@
 import React from 'react'
+import Headroom from 'react-headroom'
 import Link from 'gatsby-link'
 import { Image } from 'cloudinary-react'
 import { buttonStyleBright } from '../styles/styles'
 import normalizeTitle from '../utils/normalizeTitle'
 
 export default (props) => (
-  <div
+  <Headroom
     style={{
       background: '#303E4D',
-      position: 'fixed',
-      zIndex: '1',
-      width: '100%',
       boxShadow: '0 1px 6px 1px rgba(0,0,0,0.3)',
     }}>
       <div
@@ -43,7 +41,7 @@ export default (props) => (
                   style={{
                     margin: '0 15px 0 0',
                     color: '#fff',
-                    fontFamily: 'karla',
+                    fontFamily: 'hind vadodara',
                     fontSize: '15px',
                     display: 'flex',
                     alignItems: 'center'
@@ -56,7 +54,7 @@ export default (props) => (
                   style={{
                     margin: '0 0 0 15px',
                     color: '#fff',
-                    fontFamily: 'karla',
+                    fontFamily: 'hind vadodara',
                     fontSize: '15px',
                     display: 'flex',
                     alignItems: 'center'
@@ -79,7 +77,7 @@ export default (props) => (
                   style={{
                     margin: '0 15px 0 0',
                     color: '#fff',
-                    fontFamily: 'karla',
+                    fontFamily: 'hind vadodara',
                     fontSize: '15px',
                     display: 'flex',
                     alignItems: 'center'
@@ -91,7 +89,7 @@ export default (props) => (
                   style={{
                     margin: '0 0 0 15px',
                     color: '#fff',
-                    fontFamily: 'karla',
+                    fontFamily: 'hind vadodara',
                     fontSize: '15px',
                     display: 'flex',
                     alignItems: 'center'
@@ -114,7 +112,7 @@ export default (props) => (
                   to="/" 
                   style={{
                     color: '#fff',
-                    fontFamily: 'karla',
+                    fontFamily: 'hind vadodara',
                     fontSize: '16px',
                     display: 'flex',
                     alignItems: 'center'
@@ -153,7 +151,7 @@ export default (props) => (
               <p 
                 style={{
                   color: '#fff',
-                  fontFamily: 'karla',
+                  fontFamily: 'hind vadodara',
                   fontSize: '11px',
                   margin: '0',
                 }}>
@@ -161,5 +159,5 @@ export default (props) => (
               </p>
           </Link>
       </div>
-  </div>
+  </Headroom>
 )
