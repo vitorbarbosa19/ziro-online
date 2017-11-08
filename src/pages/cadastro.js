@@ -25,6 +25,7 @@ export default class Cadastro extends React.Component {
 			loadingCNPJ: false,
 			loadingSubmit: false,
 			cnpjValidated: false,
+			isCnpjAlreadyRegistered: false,
 			errorValidatingCNPJ: false,
 			errorNetwork: false,
 			errorSubmit: false
@@ -45,36 +46,47 @@ export default class Cadastro extends React.Component {
 		this.setState({
 			loadingCNPJ: true
 		})
-		axios.get(`https://zirocnpj.now.sh?cnpj=${this.state.CNPJ}`)
+		axios.get(`https://sheets.googleapis.com/v4/spreadsheets/${process.env.RESELLER_SHEET_ID}/values/lojistas?key=${process.env.GOOGLE_API_KEY}`)
 			.then( (response) => {
-				console.log(response)
-				this.setState({
-					loadingCNPJ: false
-				})
-				const isActivityValidated = !listAllCompanyActivities(response.data.atividade_principal, response.data.atividades_secundarias).map( (activity) => {
-					if(activity !== '47.81-4-00')
-						return true
-				}).every( (activityCondition) => {
-					return activityCondition === true
-				})
-				if(isActivityValidated && response.data.situacao === 'ATIVA') {
+				const cnpjAlreadyRegistered = response.data.values.splice(1, response.data.values.length).map( (leadInfo) => { return leadInfo[1] }).find( (cnpj) => { return (cnpj === this.state.CNPJ.toString()) })
+				if(cnpjAlreadyRegistered)
 					this.setState({
-						cnpjValidated: true
+						isCnpjAlreadyRegistered: true,
+						loadingCNPJ: false,
 					})
-				}
 				else {
-					this.setState({
-						errorValidatingCNPJ: true
-					})
+					return axios.get(`https://zirocnpj.now.sh?cnpj=${this.state.CNPJ}`)
+						.then( (response) => {
+							console.log('Validação CNPJ:', response)
+							this.setState({
+								loadingCNPJ: false
+							})
+							const isActivityValidated = !listAllCompanyActivities(response.data.atividade_principal, response.data.atividades_secundarias).map( (activity) => {
+								if(activity !== '47.81-4-00')
+									return true
+							}).every( (activityCondition) => {
+								return activityCondition === true
+							})
+							if(isActivityValidated && response.data.situacao === 'ATIVA') {
+								this.setState({
+									cnpjValidated: true
+								})
+							}
+							else {
+								this.setState({
+									errorValidatingCNPJ: true
+								})
+							}
+						})
+						.catch( (error) => {
+							console.log(error)
+							this.setState({
+								loadingCNPJ: false,
+								errorValidatingCNPJ: true,
+								errorNetwork: true
+							})
+						})
 				}
-			})
-			.catch( (error) => {
-				console.log(error)
-				this.setState({
-					loadingCNPJ: false,
-					errorValidatingCNPJ: true,
-					errorNetwork: true
-				})
 			})
 	}
 	handleForm(event) {
@@ -133,8 +145,9 @@ export default class Cadastro extends React.Component {
 					loadingSubmit: false 
 				})
 				console.log(response)
-				alert('Sucesso! Você já pode fazer login!')
-				this.props.history.push('/login')
+				//It might happen to alert user the signup was a success when it was not
+				alert('Cadastro enviado!')
+				this.props.history.push('/conta-criada')
 			})
 			.catch( (error) => {
 				this.setState({
@@ -169,22 +182,28 @@ export default class Cadastro extends React.Component {
 										{this.state.errorValidatingCNPJ ?
 											<TellUserErrorOccurredCNPJ errorNetwork={this.state.errorNetwork} />
 										:
-								      <RegisterNewUser 
-								      	handleCNPJ={this.handleCNPJ}
-								      	verifyCNPJ={this.verifyCNPJ}
-								      	handleForm={this.handleForm}
-								      	handleSubmit={this.handleSubmit}
-								      	cnpjValidated={this.state.cnpjValidated}
-								      	CNPJ={this.state.CNPJ}
-								      	firstName={this.state.firstName}
-								      	lastName={this.state.lastName}
-								      	email={this.state.email}
-								      	whatsapp={this.state.whatsapp}
-												hasStore={this.state.hasStore}
-												maxPay={this.state.maxPay}
-												referral={this.state.referral}
-												when={this.state.when}
-								      />
+								      <div>
+								      	{this.state.isCnpjAlreadyRegistered ?
+										    	<UserAlreadyRegistered />
+										    :  
+										      <RegisterNewUser 
+										      	handleCNPJ={this.handleCNPJ}
+										      	verifyCNPJ={this.verifyCNPJ}
+										      	handleForm={this.handleForm}
+										      	handleSubmit={this.handleSubmit}
+										      	cnpjValidated={this.state.cnpjValidated}
+										      	CNPJ={this.state.CNPJ}
+										      	firstName={this.state.firstName}
+										      	lastName={this.state.lastName}
+										      	email={this.state.email}
+										      	whatsapp={this.state.whatsapp}
+														hasStore={this.state.hasStore}
+														maxPay={this.state.maxPay}
+														referral={this.state.referral}
+														when={this.state.when}
+										      />
+										    }
+								      </div>
 										}
 									</div>
 								}

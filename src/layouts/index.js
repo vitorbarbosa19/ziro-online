@@ -107,7 +107,7 @@ export default class TemplateWrapper extends React.Component {
             maxWidth: 400,
             padding: '98px 0px 1.45rem',
           }}>
-            {this.props.location.pathname === '/precos' ?
+            {/\/precos\/?/.test(this.props.location.pathname) === true ?
               this.state.userId ? 
                 this.props.children({...this.props, updateUserFromLoginPage: this.updateUserFromLoginPage, logoutFromLoginPage: this.logoutFromLoginPage})  
               :
@@ -115,7 +115,7 @@ export default class TemplateWrapper extends React.Component {
             :
               null
             }
-            {this.props.location.pathname === '/cadastro' ?
+            {/\/cadastro\/?/.test(this.props.location.pathname) === true ?
               this.state.userId ? 
                 <UserAlreadyRegistered />
               :
@@ -123,13 +123,13 @@ export default class TemplateWrapper extends React.Component {
             :
               null
             }
-            {this.props.location.pathname !== '/cadastro' && this.props.location.pathname !== '/precos' ?
+            { /\/cadastro\/?/.test(this.props.location.pathname) === false && /\/precos\/?/.test(this.props.location.pathname) === false ?
               this.props.children({...this.props, updateUserFromLoginPage: this.updateUserFromLoginPage, logoutFromLoginPage: this.logoutFromLoginPage})
             :
               null
             }
         </div>
-        {this.state.userId || this.props.location.pathname === '/login' || this.props.location.pathname === '/cadastro' ? 
+        {this.state.userId || /\/login\/?/.test(this.props.location.pathname) === true || /\/cadastro\/?/.test(this.props.location.pathname) === true ? 
           null 
         :
           <Footer page={this.props.location.pathname} />

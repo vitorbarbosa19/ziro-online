@@ -9,6 +9,7 @@ export default (props) => (
       flexDirection: 'column',
       alignItems: 'center'
     }}>
+      <p style={{fontFamily: 'karla', fontSize: '10px', margin: '0', color: 'rgba(0,0,0,0.5)'}}>CNPJ com apenas números</p>
       <input
         style={inputStyle}
         type='text'
