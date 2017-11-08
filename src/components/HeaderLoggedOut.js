@@ -16,8 +16,8 @@ export default (props) => (
     <div
       style={{
         margin: '5px auto',
-        maxWidth: 400,
-        padding: '1.45rem 1.0875rem',
+        maxWidth: '400px',
+        padding: '1rem',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center'
@@ -25,7 +25,7 @@ export default (props) => (
       <Image
         style={{margin: '0'}}
         cloudName='ziro' 
-        width='85' 
+        width='80' 
         publicId='logo-original_lork1u'
         version='1508000699'
         format='png'

@@ -2,7 +2,8 @@ import React from 'react'
 import { Image } from 'cloudinary-react'
 import { header, rows } from '../utils/brandPricesTable'
 import routeExistsForBrand from '../utils/routeExistsForBrand'
-import PriceTableRow from '../components/PriceTableRow'
+import PriceTableRowNoLink from '../components/PriceTableRowNoLink'
+import PriceTableRowLink from '../components/PriceTableRowLink'
 
 export default (props) => (
 	<ul style={{
@@ -58,7 +59,8 @@ export default (props) => (
   					if(index < 4) {
   						if(routeExistsForBrand(brand[0]))
   							return (
-  								<PriceTableRow 
+  								<PriceTableRowLink
+  									key={index}
 										routeToBrand={`/${brand[0].replace(/\s/, '-').toLowerCase()}`}
 										brandInfo={brandInfo}
 										index={index}
@@ -66,7 +68,8 @@ export default (props) => (
 								)
   						else
 	  						return ( 
-	  							<PriceTableRow 
+	  							<PriceTableRowNoLink
+	  							  key={index} 
 										routeToBrand={'/precos/#'}
 										brandInfo={brandInfo}
 										index={index}

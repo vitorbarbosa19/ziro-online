@@ -104,8 +104,8 @@ export default class TemplateWrapper extends React.Component {
           className='home-container'
           style={{
             margin: '0 auto 35px',
-            maxWidth: 400,
-            padding: '98px 0px 1.45rem',
+            maxWidth: '400px',
+            padding: '78px 0px 1.45rem',
           }}>
             {/\/precos\/?/.test(this.props.location.pathname) === true ?
               this.state.userId ? 

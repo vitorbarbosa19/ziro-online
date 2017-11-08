@@ -61,7 +61,7 @@ export const labelStyle = {
 export const buttonStyleBright = {
   fontSize: '12px',
   fontFamily: 'karla',
-  padding: '5px 18px',
+  padding: '2px 15px',
   borderRadius: '25px',
   background: 'linear-gradient(90deg, #F9D423, #ffdd00)',
   color: '#303e4d',

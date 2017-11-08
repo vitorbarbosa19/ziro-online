@@ -12,7 +12,7 @@ export default (props) => (
 			textAlign: 'center'
 		}}>
 	    <Image
-	      style={{margin: '20px 0 0'}}
+	      style={{margin: '20px 0 10px'}}
 	      cloudName='ziro' 
 	      width='40'
 	      publicId='error-icon_dqsgnx'

@@ -16,7 +16,7 @@ export default (props) => (
       <div
         style={{
           margin: '0 auto',
-          maxWidth: 400,
+          maxWidth: '400px',
           padding: '0',
           display: 'flex',
           justifyContent: 'space-between',
@@ -24,9 +24,9 @@ export default (props) => (
         }}>
         {/*---Logo---*/}
           <Image
-            style={{margin: '0 0 0 12px'}}
+            style={{margin: '0 0 0 18px'}}
             cloudName='ziro' 
-            width='85' 
+            width='80' 
             publicId='logo-original_lork1u'
             version='1508000699'
             format='png'
@@ -136,7 +136,7 @@ export default (props) => (
           <Link 
             to='/login'
             style={{
-              margin: '30px 12px 10px 0',
+              margin: '18px 18px 10px 0',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center'
@@ -144,7 +144,7 @@ export default (props) => (
               <Image
                 style={{margin: '0'}}
                 cloudName='ziro'
-                width='27'
+                width='25'
                 publicId='profile-icon_mtjw08'
                 version='1509403995'
                 format='png'
