@@ -41,9 +41,16 @@ export default class TemplateWrapper extends React.Component {
   }
   onPageChange(pathname) {
     // initialize google analytics
-    ReactGA.initialize('UA-109221012-1')
-    // check if user is not in the login page
-    if(pathname !== '/login') {
+    ReactGA.initialize(process.env.ANALYTICS_TRACKING_ID)
+    //check if user is in analytics goal page
+    if(pathname === /\/conta-criada\/?/.test(pathname)) {
+      if(sessionStorage.get('userId')) {  //if does userId does not exist, user didn't enter this page through the register form
+        ReactGA.set({ userId: sessionStorage.get('userId') })
+        ReactGA.pageview(pathname)
+      }
+    }
+    // check if user is not in the login page or goal page
+    if(pathname !== /(\/conta-criada\/?)|(\/login\/?)/.test(pathname)) {
       //verify if user is logged in
       this.widget.session.get( (response) => {
         if(response.status !== 'INACTIVE') {
@@ -61,7 +68,7 @@ export default class TemplateWrapper extends React.Component {
         else {
           this.setState({ userId: null }, () => {
             sessionStorage.removeItem('userId')
-            ReactGA.pageview(pathname)  
+            ReactGA.pageview(pathname)
           })
         }
       })

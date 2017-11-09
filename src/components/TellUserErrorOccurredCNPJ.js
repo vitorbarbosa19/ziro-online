@@ -26,7 +26,7 @@ export default (props) => (
           <p>Estamos enfrentando instabilidade em nosso sistema.</p>
           <p>Lamentamos o inconveniente.</p>
           <p>Por favor, aguarde alguns minutos e tente validar seu CNPJ novamente.</p>
-          <p>Se o erro persistir, entre em contato conosco para podermos ajudá-lo: <strong><a style={{textDecoration: 'underline'}} href='tel:-11-98176-8088'>(11) 98176-8088</a></strong></p>
+          <p>Se o erro persistir, mande um Whatsapp para a gente que iremos ajudá-lo: <strong><a style={{textDecoration: 'underline'}} href='tel:-11-98176-8088'>(11) 98176-8088</a></strong></p>
         </div>
       :        
         <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '0 10px'}}>
