@@ -1,5 +1,5 @@
-import React from "react"
-import favicon from "../favicon.png"
+import React from 'react'
+import favicon from '../favicon.png'
 
 let stylesStr
 if (process.env.NODE_ENV === `production`) {
@@ -16,7 +16,7 @@ module.exports = class HTML extends React.Component {
     if (process.env.NODE_ENV === `production`) {
       css = (
         <style
-          id="gatsby-inlined-css"
+          id='gatsby-inlined-css'
           dangerouslySetInnerHTML={{ __html: stylesStr }}
         />
       )
@@ -24,13 +24,13 @@ module.exports = class HTML extends React.Component {
     return (
       <html>
         <head>
-          <meta charSet="utf-8" />
-          <meta httpEquiv="x-ua-compatible" content="ie=edge" />
+          <meta charSet='utf-8' />
+          <meta httpEquiv='x-ua-compatible' content='ie=edge' />
           <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+            name='viewport'
+            content='width=device-width, initial-scale=1, shrink-to-fit=no'
           />
-          <link rel="shortcut icon" type="image/png" href={favicon} />
+          <link rel='shortcut icon' type='image/png' href={favicon} />
           {this.props.headComponents}
           {css}
         </head>
@@ -38,7 +38,7 @@ module.exports = class HTML extends React.Component {
           {this.props.preBodyComponents}
           <div
             key={`body`}
-            id="___gatsby"
+            id='___gatsby'
             dangerouslySetInnerHTML={{ __html: this.props.body }}
           />
           {this.props.postBodyComponents}

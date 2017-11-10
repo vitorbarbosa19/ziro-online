@@ -5,6 +5,6 @@ export default (props) => (
   <Link
     to={props.routeToBrand}
     className={props.index === 0 ? 'list-style-align-left' : 'list-style-align-right'}>
-      {props.brandInfo.replace(/\$/,'').replace(/\,/, '').replace(/\./, ',')}
+    {props.brandInfo.replace(/\$/, '').replace(/\,/, '').replace(/\./, ',')}
   </Link>
 )

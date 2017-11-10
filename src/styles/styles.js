@@ -1,11 +1,11 @@
 export const containerStyle = {
-	display: 'flex',
+  display: 'flex',
   flexFlow: 'row wrap',
-	justifyContent: 'center',
+  justifyContent: 'center'
 }
 
 export const titleStyle = {
-	textAlign: 'center',
+  textAlign: 'center',
   fontSize: '16px',
   fontWeight: '600',
   color: '#fff',
@@ -19,7 +19,7 @@ export const titleStyle = {
 }
 
 export const imageStyle = {
-	borderRadius: '2px',
+  borderRadius: '2px',
   margin: '0',
   height: '250px',
   objectFit: 'cover'
@@ -49,7 +49,7 @@ export const inputStyle = {
 export const radioFormStyle = {
   display: 'flex',
   flexDirection: 'column',
-  alignItems: 'start',
+  alignItems: 'start'
 }
 
 export const labelStyle = {
