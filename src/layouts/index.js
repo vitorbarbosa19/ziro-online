@@ -33,6 +33,7 @@ export default class TemplateWrapper extends React.Component {
     }
     this.updateUserFromLoginPage = this.updateUserFromLoginPage.bind(this)
     this.logoutFromLoginPage = this.logoutFromLoginPage.bind(this)
+    this.goBack = this.goBack.bind(this)
   }
   componentWillReceiveProps(nextProps) {
     // call function to fire google analytics when path changes
@@ -91,6 +92,10 @@ export default class TemplateWrapper extends React.Component {
       this.props.history.push('/')
     })
   }
+  goBack(event) {
+    event.preventDefault()
+    this.props.history.goBack()
+  }
   render() {
     return (
       <div>
@@ -101,8 +106,8 @@ export default class TemplateWrapper extends React.Component {
             { name: 'keywords', content: 'atacado, bom retiro, moda' }
           ]} />
         {this.state.userId
-          ? <HeaderLoggedIn page={this.props.location.pathname} />
-          : <HeaderLoggedOut page={this.props.location.pathname} />
+          ? <HeaderLoggedIn page={this.props.location.pathname} goBack={this.goBack} />
+          : <HeaderLoggedOut page={this.props.location.pathname} goBack={this.goBack} />
         }
         <div
           className='home-container'

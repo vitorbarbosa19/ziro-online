@@ -20,15 +20,17 @@ export default (props) => (
         alignItems: 'center'
       }}>
       {/* ---Logo--- */}
-      <Image
-        style={{ margin: '0 0 0 18px' }}
-        cloudName='ziro'
-        width='80'
-        publicId='logo-original_lork1u'
-        version='1508000699'
-        format='png'
-        secure='true'
-      />
+      <Link to='/'>
+        <Image
+          style={{ margin: '0 0 0 18px' }}
+          cloudName='ziro'
+          width='80'
+          publicId='logo-original_lork1u'
+          version='1508000699'
+          format='png'
+          secure='true'
+        />
+      </Link>
       {/* ---Home nav--- */}
       {props.page === '/'
         ? <div
@@ -45,7 +47,7 @@ export default (props) => (
               display: 'flex',
               alignItems: 'center'
             }}>
-                    Preços
+              Preços
           </Link>
           <Link
             className='nav-link-active'
@@ -58,7 +60,7 @@ export default (props) => (
               display: 'flex',
               alignItems: 'center'
             }}>
-                    Catálogo
+              Catálogo
           </Link>
         </div>
         : null
@@ -80,7 +82,7 @@ export default (props) => (
               display: 'flex',
               alignItems: 'center'
             }}>
-                    Preços
+              Preços
           </Link>
           <Link
             to='/'
@@ -92,7 +94,7 @@ export default (props) => (
               display: 'flex',
               alignItems: 'center'
             }}>
-                    Catálogo
+              Catálogo
           </Link>
         </div>
         : null
@@ -104,8 +106,9 @@ export default (props) => (
           style={{
             display: 'flex'
           }}>
-          <Link
-            to='/'
+          <a
+            onClick={props.goBack}
+            href='#'
             style={{
               color: '#fff',
               fontFamily: 'hind vadodara',
@@ -123,7 +126,7 @@ export default (props) => (
               secure='true'
             />
             {normalizeTitle(props.page)}
-          </Link>
+          </a>
         </div>
       }
       {/* ---Login Icon--- */}
@@ -151,7 +154,7 @@ export default (props) => (
             fontSize: '11px',
             margin: '0'
           }}>
-                  Meu perfil
+            Meu perfil
         </p>
       </Link>
     </div>

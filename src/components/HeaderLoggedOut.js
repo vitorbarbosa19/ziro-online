@@ -20,15 +20,17 @@ export default (props) => (
         justifyContent: 'space-between',
         alignItems: 'center'
       }}>
-      <Image
-        style={{ margin: '0' }}
-        cloudName='ziro'
-        width='80'
-        publicId='logo-original_lork1u'
-        version='1508000699'
-        format='png'
-        secure='true'
-      />
+      <Link to='/'>
+        <Image
+          style={{ margin: '0' }}
+          cloudName='ziro'
+          width='80'
+          publicId='logo-original_lork1u'
+          version='1508000699'
+          format='png'
+          secure='true'
+        />
+      </Link>
       {props.page === '/'
         ? <Link
           to='/'
@@ -39,7 +41,7 @@ export default (props) => (
             display: 'flex',
             alignItems: 'center'
           }}>
-          Catálogo
+            Catálogo
         </Link>
         : null}
       {props.page === '/' ? null
@@ -47,8 +49,9 @@ export default (props) => (
           style={{
             display: 'flex'
           }}>
-          <Link
-            to='/'
+          <a
+            onClick={props.goBack}
+            href='#'
             style={{
               color: '#fff',
               fontFamily: 'hind vadodara',
@@ -66,7 +69,7 @@ export default (props) => (
               secure='true'
             />
             {normalizeTitle(props.page)}
-          </Link>
+          </a>
         </div>}
       {props.page === '/login' ? null
         : <Link
