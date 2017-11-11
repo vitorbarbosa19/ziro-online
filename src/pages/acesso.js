@@ -3,12 +3,12 @@ import Link from 'gatsby-link'
 import { Image } from 'cloudinary-react'
 import { buttonStyleDark, buttonStyleGhost } from '../styles/styles'
 
-export default () =>
-  (<div
+export default () => (
+  <div
     style={{
   		fontFamily: 'karla',
   		fontSize: '14px',
-  		padding: '20px 25px 0',
+  		margin: '20px 25px 0',
   		textAlign: 'justify'
   	}}>
     <div style={{ textAlign: 'center' }}>
@@ -55,4 +55,5 @@ export default () =>
 		  				Retornando? Fazer login
 		  		</Link>
     </div>
-  </div>)
+  </div>
+)

@@ -48,7 +48,7 @@ export default class GalleryAllBrands extends React.Component {
               )
             }
             return (
-              <div>Carregando imagens...</div>
+              <div/>
             )
           })
           : <Spinner style={{ textAlign: 'center' }} />

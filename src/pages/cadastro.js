@@ -65,21 +65,25 @@ export default class Cadastro extends React.Component {
               this.setState({
                 loadingCNPJ: false
               })
-              const isActivityValidated = !listAllCompanyActivities(response.data.atividade_principal, response.data.atividades_secundarias).map((activity) => {
-                if (activity !== '47.81-4-00') {
-                  return true
+              if (response.data.status === 'ERROR') {
+                this.setState({ errorValidatingCNPJ: true })
+              } else {
+                const isActivityValidated = !listAllCompanyActivities(response.data.atividade_principal, response.data.atividades_secundarias).map((activity) => {
+                  if (activity !== '47.81-4-00') {
+                    return true
+                  }
+                }).every((activityCondition) => {
+                  return activityCondition === true
+                })
+                if (isActivityValidated && response.data.situacao === 'ATIVA') {
+                  this.setState({
+                    cnpjValidated: true
+                  })
+                } else {
+                  this.setState({
+                    errorValidatingCNPJ: true
+                  })
                 }
-              }).every((activityCondition) => {
-                return activityCondition === true
-              })
-              if (isActivityValidated && response.data.situacao === 'ATIVA') {
-                this.setState({
-                  cnpjValidated: true
-                })
-              }							else {
-                this.setState({
-                  errorValidatingCNPJ: true
-                })
               }
             })
             .catch((error) => {
@@ -116,7 +120,7 @@ export default class Cadastro extends React.Component {
     case 'referral':
       if (event.target.value === 'Já sou cliente') {
         this.setState({ referral: event.target.value, when: 'N/A - Já era cliente' })
-      } else					{
+      } else	{
         this.setState({ referral: event.target.value })
       }
       break
@@ -160,7 +164,7 @@ export default class Cadastro extends React.Component {
           })
           console.log(error)
         })
-    }		else			{
+    } else {
       alert('Preencha todos os campos de cadastro!')
     }
   }

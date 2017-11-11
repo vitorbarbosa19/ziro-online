@@ -27,8 +27,8 @@ export default class ContaCriada extends React.Component {
 		      fontSize: '16px',
 		      textAlign: 'center'
 		    }}>
-        <h2>Sucesso! Você já pode fazer login!</h2>
-        <p>Você será redirecionado em instantes</p>
+        <h2>Sucesso!</h2>
+        <p>Você já pode fazer login! Redirecionando em instantes</p>
         <p>{this.state.countdown}...</p>
       </div>
     )

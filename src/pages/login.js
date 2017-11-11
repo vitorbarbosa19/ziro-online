@@ -76,13 +76,13 @@ export default class Login extends React.Component {
             userLogin={this.state.userLogin}
             logout={this.logout}
           />
-          :						null
+          :	null
         }
         {this.state.userId
           ? null
           :
           // show Okta's login container
-		        <div
+		      <div
             style={{
 		        		display: 'flex',
 		        		flexDirection: 'column',
@@ -104,7 +104,7 @@ export default class Login extends React.Component {
         }
         {this.state.userId
           ? null
-          :						<UserHelpLogin />
+          :	<UserHelpLogin />
         }
       </div>
     )
