@@ -7,6 +7,13 @@ a {
   color: #303e4d;
 }
 
+/*-------Headroom Nav Fix-------*/
+
+.headroom-wrapper {
+  height: 76px !important;
+}
+
+
 /*-------Nav links decoration-------*/
 
 .nav-link-active {

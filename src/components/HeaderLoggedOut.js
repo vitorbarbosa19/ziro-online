@@ -15,7 +15,7 @@ export default (props) => (
       style={{
         margin: '0 auto',
         maxWidth: '400px',
-        padding: '1rem',
+        padding: '1.2rem',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center'

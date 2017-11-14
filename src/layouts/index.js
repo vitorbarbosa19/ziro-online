@@ -111,11 +111,7 @@ export default class TemplateWrapper extends React.Component {
         }
         <div
           className='home-container'
-          style={{
-            margin: '0 auto',
-            maxWidth: '400px',
-            padding: '7px 0px 1.45rem'
-          }}>
+          style={this.state.userId ? {margin: '0 auto', maxWidth: '400px', padding: '7px 0px 1rem'} : {margin: '0 auto', maxWidth: '400px', padding: '7px 0px 3rem'} }>
           {/\/precos\/?/.test(this.props.location.pathname) === true
             ? this.state.userId
               ? this.props.children({ ...this.props, updateUserFromLoginPage: this.updateUserFromLoginPage, logoutFromLoginPage: this.logoutFromLoginPage })
