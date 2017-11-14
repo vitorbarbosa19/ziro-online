@@ -1,8 +1,0 @@
-[context.production]
-  [context.production.environment]
-		ANALYTICS_TRACKING_ID = "UA-109221012-1"
-		GOOGLE_API_KEY = "AIzaSyDrVzz6zOSMpArB3R696ylCaSqC5RCTZsk"
-		RESELLER_SHEET_ID = "11b2-ODRNFJLJ0GCH29woYtOT6OCCyIxR9KgUUsSo13E"
-		OKTA_URL = "https://dev-934752.oktapreview.com"
-		OKTA_CLIENT_ID = "0oaclklpxa9x0xodk0h7"
-		OKTA_REDIRECT_URI = "https://ziro.online"
