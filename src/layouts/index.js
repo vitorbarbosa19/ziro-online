@@ -20,9 +20,9 @@ export default class TemplateWrapper extends React.Component {
     if (typeof window !== 'undefined') {
       // initialize Okta widget to allow fetching users from Okta's database
       this.widget = new OktaSignIn({
-        baseUrl: process.env.OKTA_URL,
-        redirectUri: process.env.OKTA_REDIRECT_URI,
-        clientId: process.env.OKTA_CLIENT_ID,
+        baseUrl: process.env.OKTA_URL || process.env.GATSBY_OKTA_URL,
+        redirectUri: process.env.OKTA_REDIRECT_URI || process.env.GATSBY_REDIRECT_URI,
+        clientId: process.env.OKTA_CLIENT_ID || process.env.GATSBY_CLIENT_ID,
         authParams: {
           responseType: 'id_token'
         },
@@ -43,7 +43,7 @@ export default class TemplateWrapper extends React.Component {
   }
   onPageChange(pathname) {
     // initialize google analytics
-    ReactGA.initialize(process.env.ANALYTICS_TRACKING_ID)
+    ReactGA.initialize(process.env.ANALYTICS_TRACKING_ID || process.env.GATSBY_ANALYTICS_TRACKING_ID)
     // check if user is in analytics goal page
     if (pathname === /\/conta-criada\/?/.test(pathname)) {
       // if does userId does not exist, user didn't enter this page through the register form

@@ -1,4 +1,4 @@
-// the spinner that shows when the page is 'loading'
+// Spinner that shows when the page is 'loading'
 import React from 'react'
 
 export default class Spinner extends React.Component {

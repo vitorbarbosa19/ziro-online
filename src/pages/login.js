@@ -16,9 +16,9 @@ export default class Login extends React.Component {
   }
   componentDidMount() {
     this.widget = new OktaSignIn({
-		  baseUrl: process.env.OKTA_URL,
-		  redirectUri: process.env.OKTA_REDIRECT_URI,
-		  clientId: process.env.OKTA_CLIENT_ID,
+      baseUrl: process.env.OKTA_URL || process.env.GATSBY_OKTA_URL,
+      redirectUri: process.env.OKTA_REDIRECT_URI || process.env.GATSBY_REDIRECT_URI,
+      clientId: process.env.OKTA_CLIENT_ID || process.env.GATSBY_CLIENT_ID,
 		  authParams: {
 		  	responseType: 'id_token'
 		  },
