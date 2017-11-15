@@ -27,6 +27,7 @@ export default class Login extends React.Component {
     this.widget.session.get((response) => {
       // check if user is active on Okta's database
       if (response.status !== 'INACTIVE') {
+        console.log(response)
         this.props.updateUserFromLoginPage(response.userId, response.login)
         this.setState({
           userId: response.userId,
@@ -49,6 +50,7 @@ export default class Login extends React.Component {
       el: this.loginContainer
     },
     (response) => {
+      console.log(response)
       this.props.updateUserFromLoginPage(response.claims.idp, response.claims.email)
       this.setState({
         userId: response.claims.idp,
