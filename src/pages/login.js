@@ -50,26 +50,14 @@ export default class Login extends React.Component {
       el: this.loginContainer
     },
     (response) => {
-      console.log(response)
+      console.log('LOGIN:', response)
       if(response.status !== 'SUCCESS')
         alert('Erro no sistema! Entre em contato conosco via WhatsApp: (11) 98176-8088')
       if(response.claims) {
-        this.props.updateUserFromLoginPage(response.claims.sub)
-        this.setState({
-          userId: response.claims.sub,
-          userLogin: response.claims.email
-        }, () => {
-          this.props.history.push('/')
-        })
+        this.props.updateUserAndRedirect(response.claims.sub)
       }
       if(response.user) {
-        this.props.updateUserFromLoginPage(response.user.id)
-        this.setState({
-          userId: response.user.id,
-          userLogin: response.user.profile.login
-        }, () => {
-          this.props.history.push('/')
-        })
+        this.props.updateUserAndRedirect(response.user.id)
       }
     },
     (error) => {

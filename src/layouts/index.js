@@ -32,6 +32,7 @@ export default class TemplateWrapper extends React.Component {
       this.onPageChange(props.location.pathname)
     }
     this.updateUserFromLoginPage = this.updateUserFromLoginPage.bind(this)
+    this.updateUserAndRedirect = this.updateUserAndRedirect.bind(this)
     this.logoutFromLoginPage = this.logoutFromLoginPage.bind(this)
     this.goBack = this.goBack.bind(this)
   }
@@ -45,7 +46,7 @@ export default class TemplateWrapper extends React.Component {
     // initialize google analytics
     ReactGA.initialize(process.env.ANALYTICS_TRACKING_ID || process.env.GATSBY_ANALYTICS_TRACKING_ID)
     // check if user is in analytics goal page
-    if (pathname === /\/conta-criada\/?/.test(pathname)) {
+    if (/^\/conta-criada\/?$/.test(pathname)) {
       // if does userId does not exist, user didn't enter this page through the register form
       if (sessionStorage.get('userId')) {
         ReactGA.set({ userId: sessionStorage.get('userId') })
@@ -53,7 +54,7 @@ export default class TemplateWrapper extends React.Component {
       }
     }
     // check if user is not in the login page or goal page
-    if (pathname !== /(\/conta-criada\/?)|(\/login\/?)/.test(pathname)) {
+    if (!/(^\/conta-criada\/?$)|(^\/login\/?$)/.test(pathname)) {
       // verify if user is logged in
       this.widget.session.get((response) => {
         console.log(response)
@@ -87,6 +88,12 @@ export default class TemplateWrapper extends React.Component {
       sessionStorage.setItem('userId', userId)
     })
   }
+  updateUserAndRedirect(userId) {
+    this.setState({ userId: userId }, () => {
+      sessionStorage.setItem('userId', userId)
+      this.props.history.push('/')
+    })
+  } 
   logoutFromLoginPage() {
     this.setState({ userId: null }, () => {
       sessionStorage.removeItem('userId')
@@ -113,24 +120,24 @@ export default class TemplateWrapper extends React.Component {
         <div
           className='home-container'
           style={this.state.userId ? {margin: '0 auto', maxWidth: '400px', padding: '7px 0px 1rem'} : {margin: '0 auto', maxWidth: '400px', padding: '7px 0px 3rem'} }>
-          {/\/precos\/?/.test(this.props.location.pathname) === true
+          { /^\/precos\/?$/.test(this.props.location.pathname) === true
             ? this.state.userId
-              ? this.props.children({ ...this.props, updateUserFromLoginPage: this.updateUserFromLoginPage, logoutFromLoginPage: this.logoutFromLoginPage })
+              ? this.props.children({ ...this.props })
               : <TellUserHeNeedsToRegister />
             : null
           }
-          {/\/cadastro\/?/.test(this.props.location.pathname) === true
+          { /^\/cadastro\/?$/.test(this.props.location.pathname) === true
             ? this.state.userId
               ? <UserAlreadyRegistered />
-              : this.props.children({ ...this.props, updateUserFromLoginPage: this.updateUserFromLoginPage, logoutFromLoginPage: this.logoutFromLoginPage })
+              : this.props.children({ ...this.props })
             : null
           }
-          { /\/cadastro\/?/.test(this.props.location.pathname) === false && /\/precos\/?/.test(this.props.location.pathname) === false
-            ? this.props.children({ ...this.props, updateUserFromLoginPage: this.updateUserFromLoginPage, logoutFromLoginPage: this.logoutFromLoginPage })
+          { /^\/cadastro\/?$/.test(this.props.location.pathname) === false && /^\/precos\/?$/.test(this.props.location.pathname) === false
+            ? this.props.children({ ...this.props, updateUserFromLoginPage: this.updateUserFromLoginPage, updateUserAndRedirect: this.updateUserAndRedirect, logoutFromLoginPage: this.logoutFromLoginPage })
             : null
           }
         </div>
-        {this.state.userId || /(\/login\/?)|(\/cadastro\/?)|(\/404\/?)/.test(this.props.location.pathname)
+        {this.state.userId || /(^\/login\/?$)|(^\/cadastro\/?$)|(^\/404\/?$)/.test(this.props.location.pathname)
           ? null
           : <Footer page={this.props.location.pathname} />
         }
