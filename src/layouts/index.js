@@ -23,9 +23,6 @@ export default class TemplateWrapper extends React.Component {
         baseUrl: process.env.OKTA_URL || process.env.GATSBY_OKTA_URL,
         redirectUri: process.env.OKTA_REDIRECT_URI || process.env.GATSBY_REDIRECT_URI,
         clientId: process.env.OKTA_CLIENT_ID || process.env.GATSBY_CLIENT_ID,
-        authParams: {
-          responseType: ['id_token', 'token']
-        },
         language: 'pt-BR'
       })
       // call function to fire google analytics on page load, once
