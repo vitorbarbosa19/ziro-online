@@ -56,6 +56,7 @@ export default class TemplateWrapper extends React.Component {
     if (pathname !== /(\/conta-criada\/?)|(\/login\/?)/.test(pathname)) {
       // verify if user is logged in
       this.widget.session.get((response) => {
+        console.log(response)
         if (response.status !== 'INACTIVE') {
           // if he is, associate the pageview with this userId and send a pageview to google analytics
           ReactGA.set({ userId: response.userId })

@@ -28,12 +28,12 @@ export default class Login extends React.Component {
       // check if user is active on Okta's database
       if (response.status !== 'INACTIVE') {
         console.log(response)
-        this.props.updateUserFromLoginPage(response.userId, response.login)
+        this.props.updateUserFromLoginPage(response.userId)
         this.setState({
           userId: response.userId,
           userLogin: response.login
         })
-      }			else {
+      }	else {
         this.setState({
           userId: null,
           userLogin: null
