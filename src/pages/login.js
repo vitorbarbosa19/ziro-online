@@ -19,6 +19,9 @@ export default class Login extends React.Component {
       baseUrl: process.env.OKTA_URL || process.env.GATSBY_OKTA_URL,
       redirectUri: process.env.OKTA_REDIRECT_URI || process.env.GATSBY_REDIRECT_URI,
       clientId: process.env.OKTA_CLIENT_ID || process.env.GATSBY_CLIENT_ID,
+		  authParams: {
+		  	responseType: 'id_token'
+		  },
 		  language: 'pt-BR'
     })
     this.widget.session.get((response) => {
@@ -48,12 +51,13 @@ export default class Login extends React.Component {
     },
     (response) => {
       console.log('LOGIN:', response)
-      if(response.status !== 'SUCCESS')
+      if (response.status !== 'SUCCESS') {
         alert('Erro no sistema! Entre em contato conosco via WhatsApp: (11) 98176-8088')
-      if(response.claims) {
+      }
+      if (response.claims) {
         this.props.updateUserAndRedirect(response.claims.sub)
       }
-      if(response.user) {
+      if (response.user) {
         this.props.updateUserAndRedirect(response.user.id)
       }
     },

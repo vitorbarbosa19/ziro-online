@@ -23,6 +23,9 @@ export default class TemplateWrapper extends React.Component {
         baseUrl: process.env.OKTA_URL || process.env.GATSBY_OKTA_URL,
         redirectUri: process.env.OKTA_REDIRECT_URI || process.env.GATSBY_REDIRECT_URI,
         clientId: process.env.OKTA_CLIENT_ID || process.env.GATSBY_CLIENT_ID,
+        authParams: {
+          responseType: 'id_token'
+        },
         language: 'pt-BR'
       })
       // call function to fire google analytics on page load, once
@@ -88,9 +91,9 @@ export default class TemplateWrapper extends React.Component {
   updateUserAndRedirect(userId) {
     this.setState({ userId: userId }, () => {
       sessionStorage.setItem('userId', userId)
-      //this.props.history.push('/')
+      this.props.history.push('/')
     })
-  } 
+  }
   logoutFromLoginPage() {
     this.setState({ userId: null }, () => {
       sessionStorage.removeItem('userId')
@@ -116,7 +119,7 @@ export default class TemplateWrapper extends React.Component {
         }
         <div
           className='home-container'
-          style={this.state.userId ? {margin: '0 auto', maxWidth: '400px', padding: '7px 0px 1rem'} : {margin: '0 auto', maxWidth: '400px', padding: '7px 0px 3rem'} }>
+          style={this.state.userId ? { margin: '0 auto', maxWidth: '400px', padding: '7px 0px 1rem' } : { margin: '0 auto', maxWidth: '400px', padding: '7px 0px 3rem' } }>
           { /^\/precos\/?$/.test(this.props.location.pathname) === true
             ? this.state.userId
               ? this.props.children({ ...this.props })
