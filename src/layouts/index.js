@@ -91,7 +91,7 @@ export default class TemplateWrapper extends React.Component {
   updateUserAndRedirect(userId) {
     this.setState({ userId: userId }, () => {
       sessionStorage.setItem('userId', userId)
-      this.props.history.push('/')
+      //this.props.history.push('/')
     })
   } 
   logoutFromLoginPage() {
