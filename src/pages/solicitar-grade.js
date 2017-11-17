@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'gatsby-link'
 import { Image } from 'cloudinary-react'
+import WhatsappIcon from '../components/WhatsappIcon'
 import { buttonStyleDark } from '../styles/styles'
 
 export default () => (
@@ -37,7 +38,11 @@ export default () => (
       textAlign: 'justify'
     }}>
       <li style={{ paddingLeft: '10px' }}>
-        Adicione em seu Whatsapp o nosso número: <strong><a style={{ textDecoration: 'underline' }} href='tel:-11-98176-8088'>(11) 98176-8088</a></strong>;
+        Adicione em seu Whatsapp o nosso número:&nbsp;
+        <strong>
+          <a style={{ textDecoration: 'underline', paddingLeft: '2px' }} href='tel:-11-98176-8088'>(11) 98176-8088</a>
+        </strong>&nbsp;
+        <WhatsappIcon />;
       </li>
       <li style={{ paddingLeft: '10px' }}>
         Defina uma peça do nosso catálogo;

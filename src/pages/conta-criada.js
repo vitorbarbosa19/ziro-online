@@ -12,9 +12,13 @@ export default class ContaCriada extends React.Component {
       alert('Seu LOGIN é o seu email. Sua SENHA é o seu CNPJ (apenas números)')
       this.props.history.push('/login')
     }, 5000)
-    window.setInterval(() => {
+    let countdownId = window.setInterval(() => {
       this.setState((prevState) => {
         return { countdown: prevState.countdown - 1 }
+      }, () => {
+        if (this.state.countdown === 0) {
+          clearInterval(countdownId)
+        }
       })
     }, 1000)
   }

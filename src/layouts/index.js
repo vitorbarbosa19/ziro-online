@@ -48,8 +48,8 @@ export default class TemplateWrapper extends React.Component {
     // check if user is in analytics goal page
     if (/^\/conta-criada\/?$/.test(pathname)) {
       // if does userId does not exist, user didn't enter this page through the register form
-      if (sessionStorage.get('userId')) {
-        ReactGA.set({ userId: sessionStorage.get('userId') })
+      if (sessionStorage.getItem('userId')) {
+        ReactGA.set({ userId: sessionStorage.getItem('userId') })
         ReactGA.pageview(pathname)
       }
     }

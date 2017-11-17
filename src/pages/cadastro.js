@@ -38,7 +38,7 @@ export default class Cadastro extends React.Component {
   }
   handleCNPJ(event) {
     this.setState({
-      CNPJ: event.target.value
+      CNPJ: event.target.value.replace(/\W/g, '')
     })
   }
   verifyCNPJ(event) {
