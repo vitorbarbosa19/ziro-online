@@ -52,6 +52,10 @@ a {
   margin-right: 1%;
 }
 
+[data-brand-has-route='no'] {
+  color: rgba(0,0,0,0.3);
+}
+
 /*-------Login tooltip decoration-------*/
 
 .__react_component_tooltip.show.place-top.type-dark {

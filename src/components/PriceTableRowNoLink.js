@@ -13,6 +13,7 @@ export default class PriceTableRowNoLink extends React.Component {
       <a
         href={this.props.routeToBrand}
         onClick={this.preventLinkScrollUp}
+        data-brand-has-route='no'
         className={this.props.index === 0 ? 'list-style-align-left' : 'list-style-align-right'}>
         {this.props.brandInfo.replace(/\$/, '').replace(/\,/, '').replace(/\./, ',')}
       </a>
