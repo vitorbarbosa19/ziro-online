@@ -8,15 +8,19 @@ import {
   containerStyle,
   titleStyle,
   imageStyle,
-  linkStyle
+  linkStyle,
+  inputStyle,
+  filter
 } from '../styles/styles'
 
 export default class GalleryAllBrands extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      allBrandsWithThumbs: null
+      allBrandsWithThumbs: null,
+      filterValue: ''
     }
+    this.updateFilter = this.updateFilter.bind(this)
   }
   componentDidMount() {
     cloudinaryApi.getThumbnailsAndNames(allBrands)
@@ -32,27 +36,42 @@ export default class GalleryAllBrands extends React.Component {
         console.log(error)
       })
   }
+  updateFilter(event) {
+    this.setState({ filterValue: event.target.value })
+  }
   render() {
     return (
-      <div style={containerStyle}>
-        {this.state.allBrandsWithThumbs
-          ? this.state.allBrandsWithThumbs.sort((a, b) => {
-            return Date.parse(b.updated_at) - Date.parse(a.updated_at)
-          }).map((brand, index) => {
-            if (brand) {
+      <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+        <input style={filter} type='text' placeholder='Procurar marca...' onChange={this.updateFilter} value={this.state.filterValue} />
+        <div style={containerStyle}>
+          {this.state.allBrandsWithThumbs
+            ? this.state.allBrandsWithThumbs
+            .filter((brand) => {
+              return Boolean(brand)
+            })
+            .sort((a, b) => {
+              return b.name > a.name ? -1 : 1
+              //return Date.parse(b.updated_at) > Date.parse(a.updated_at) ? -1 : 1
+            })
+            .filter((brand) => {
+              return brand.name.toLowerCase().includes(this.state.filterValue.toLowerCase())
+            })
+            .map((brand, index) => {
+              if (brand) {
+                return (
+                  <Link style={linkStyle} key={index} to={`/${brand.name.toLowerCase().replace(/\s+/g, '-')}`} >
+                    <Image style={imageStyle} cloudName='ziro' width='400' publicId={brand.thumb_id[0]} format='jpg' secure='true' />
+                    <h1 style={titleStyle}>{brand.name}</h1>
+                  </Link>
+                )
+              }
               return (
-                <Link style={linkStyle} key={index} to={`/${brand.name.toLowerCase().replace(/\s+/g, '-')}`} >
-                  <Image style={imageStyle} cloudName='ziro' width='400' publicId={brand.thumb_id[0]} format='jpg' secure='true' />
-                  <h1 style={titleStyle}>{brand.name}</h1>
-                </Link>
+                <div/>
               )
-            }
-            return (
-              <div/>
-            )
-          })
-          : <Spinner style={{ textAlign: 'center' }} />
-        }
+            })
+            : <Spinner style={{ textAlign: 'center' }} />
+          }
+        </div>
       </div>
     )
   }

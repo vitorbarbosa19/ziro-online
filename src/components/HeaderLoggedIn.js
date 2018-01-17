@@ -20,7 +20,7 @@ export default (props) => (
         alignItems: 'center'
       }}>
       {/* ---Logo--- */}
-      <Link to='/'>
+      <Link to='/' style={{ display: 'flex', alignItems: 'center' }}>
         <Image
           style={{ margin: '0 0 0 18px' }}
           cloudName='ziro'

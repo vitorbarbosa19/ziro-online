@@ -1,3 +1,20 @@
+export const filter = {
+  WebkitAppearance: 'none',
+  outline: 'none',
+  width: '60%',
+  margin: '10px 0 15px',
+  color: 'rgba(48, 62, 77, 1)',
+  fontSize: '14px',
+  fontFamily: 'karla',
+  textIndent: '20px',
+  padding: '6px 35px 6px 0px',
+  border: 'none',
+  borderRadius: '25px',
+  background: `white right 15px center no-repeat
+    url("http://res.cloudinary.com/ziro/image/upload/c_scale,w_14/v1516155611/search_jvbvlc.png")`,
+  boxShadow: `0px 2px 6px 0px rgba(0,0,0,0.1), 0px -1px 12px 1px rgba(0,0,0,0.04)`
+}
+
 export const containerStyle = {
   display: 'flex',
   flexFlow: 'row wrap',
@@ -32,6 +49,7 @@ export const linkStyle = {
 
 export const inputStyle = {
   WebkitAppearance: 'none',
+  outline: 'none',
   fontSize: '13px',
   width: '200px',
   textAlign: 'center',

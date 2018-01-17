@@ -20,7 +20,7 @@ export default (props) => (
         justifyContent: 'space-between',
         alignItems: 'center'
       }}>
-      <Link to='/'>
+      <Link to='/' style={{ display: 'flex', alignItems: 'center' }}>
         <Image
           style={{ margin: '0' }}
           cloudName='ziro'
