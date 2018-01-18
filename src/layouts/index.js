@@ -14,7 +14,8 @@ export default class TemplateWrapper extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      userId: null
+      userId: null,
+      scrollPositionY: null
     }
     // don't run Okta's initializer on server render
     if (typeof window !== 'undefined') {
@@ -37,6 +38,10 @@ export default class TemplateWrapper extends React.Component {
     this.goBack = this.goBack.bind(this)
   }
   componentWillReceiveProps(nextProps) {
+    // save scroll position right before leaving main page
+    if (this.props.location.pathname === '/' && nextProps.location.pathname !== '/') {
+      this.setState({ scrollPositionY: window.scrollY })
+    }
     // call function to fire google analytics when path changes
     if (this.props.location.pathname !== nextProps.location.pathname) {
       this.onPageChange(nextProps.location.pathname)
@@ -133,7 +138,7 @@ export default class TemplateWrapper extends React.Component {
             : null
           }
           { /^\/cadastro\/?$/.test(this.props.location.pathname) === false && /^\/precos\/?$/.test(this.props.location.pathname) === false
-            ? this.props.children({ ...this.props, updateUserFromLoginPage: this.updateUserFromLoginPage, updateUserAndRedirect: this.updateUserAndRedirect, logoutFromLoginPage: this.logoutFromLoginPage })
+            ? this.props.children({ ...this.props, updateUserFromLoginPage: this.updateUserFromLoginPage, updateUserAndRedirect: this.updateUserAndRedirect, logoutFromLoginPage: this.logoutFromLoginPage, scrollPositionY: this.state.scrollPositionY })
             : null
           }
         </div>

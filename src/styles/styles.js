@@ -11,7 +11,7 @@ export const filter = {
   border: 'none',
   borderRadius: '25px',
   background: `white right 15px center no-repeat
-    url("http://res.cloudinary.com/ziro/image/upload/c_scale,w_14/v1516155611/search_jvbvlc.png")`,
+    url("https://res.cloudinary.com/ziro/image/upload/c_scale,w_14/v1516155611/search_jvbvlc.png")`,
   boxShadow: `0px 2px 6px 0px rgba(0,0,0,0.1), 0px -1px 12px 1px rgba(0,0,0,0.04)`
 }
 

@@ -9,7 +9,6 @@ import {
   titleStyle,
   imageStyle,
   linkStyle,
-  inputStyle,
   filter
 } from '../styles/styles'
 
@@ -30,6 +29,11 @@ export default class GalleryAllBrands extends React.Component {
         }))
         this.setState({
           allBrandsWithThumbs: response
+        }, () => {
+          // after new state is set, scroll to previous position before navigating away
+          if (this.props.scrollPositionY) {
+            window.scrollTo(0, this.props.scrollPositionY)
+          }
         })
       })
       .catch((error) => {
