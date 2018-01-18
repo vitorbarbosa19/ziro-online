@@ -13,15 +13,19 @@ export default class BrandGallery extends React.Component {
     super(props)
     this.state = {
       loading: true,
-      allPhotos: null
+      allPhotos: null,
+      next: null
     }
+    this.lazyLoading = this.lazyLoading.bind(this)
   }
   componentDidMount() {
+    window.addEventListener('scroll', this.lazyLoading)
     cloudinaryApi.getBrandGallery(this.props.brand)
       .then((response) => {
         this.setState({
           loading: false,
-          allPhotos: response.data.resources
+          allPhotos: response.data.resources,
+          next: response.data.next_cursor
         })
       })
       .catch((error) => {
@@ -31,10 +35,30 @@ export default class BrandGallery extends React.Component {
         console.log(error.response)
       })
   }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.lazyLoading)
+  }
+  lazyLoading() {
+    if (this.state.next && (window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+      cloudinaryApi.getBrandGallery(this.props.brand, this.state.next)
+        .then((response) => {
+          this.setState((prevState) => {
+            prevState.allPhotos.push(...response.data.resources)
+            return {
+              allPhotos: prevState.allPhotos,
+              next: response.data.next_cursor
+            }
+          })
+        })
+        .catch((error) => {
+          console.log(error.response)
+        })
+    }
+  }
   render() {
     const whatsappLink = 'whatsapp://send?phone=5511996454922&text=https://res.cloudinary.com/ziro/image/upload/v'
     return (
-      <div style={{ textAlign: 'center' }}>
+      <div onScroll={this.lazyLoading} style={{ textAlign: 'center' }}>
         {this.state.loading
 			  	? <Spinner />
           : this.state.allPhotos

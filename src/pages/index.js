@@ -50,8 +50,8 @@ export default class GalleryAllBrands extends React.Component {
               return Boolean(brand)
             })
             .sort((a, b) => {
-              return b.name > a.name ? -1 : 1
-              //return Date.parse(b.updated_at) > Date.parse(a.updated_at) ? -1 : 1
+              // return b.name > a.name ? -1 : 1
+              return Date.parse(b.updated_at) > Date.parse(a.updated_at) ? -1 : 1
             })
             .filter((brand) => {
               return brand.name.toLowerCase().includes(this.state.filterValue.toLowerCase())

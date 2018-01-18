@@ -22,7 +22,9 @@ export default {
         })
     }))
   },
-  getBrandGallery: (brandName) => {
-    return axios.get(`https://res.cloudinary.com/ziro/image/list/${brandName.toLowerCase()}.json`)
+  getBrandGallery: (brandName, next) => {
+    if (next)
+      return axios.get(`https://ziro-data.now.sh?type=cloudinary&brand=${brandName.toLowerCase()}&next=${next}`)
+    return axios.get(`https://ziro-data.now.sh?type=cloudinary&brand=${brandName.toLowerCase()}`)
   }
 }
