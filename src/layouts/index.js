@@ -115,7 +115,7 @@ export default class TemplateWrapper extends React.Component {
         <Helmet
           title='Ziro Online'
           meta={[
-            { name: 'description', content: 'Catalogo de marcas de atacado' },
+            { name: 'description', content: 'O maior catálogo de roupas do Bom Retiro' },
             { name: 'keywords', content: 'atacado, bom retiro, moda' }
           ]} />
         {this.state.userId

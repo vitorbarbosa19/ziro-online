@@ -64,6 +64,16 @@ export default (props) => (
           checked={props.hasStore === 'Não'}
         />
       </div>
+      <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <label style={{ marginRight: '30px', fontSize: '14px' }}>Estou abrindo</label>
+        <input
+          className='lead-form-input-radio'
+          type='radio'
+          name='hasStore'
+          value='Estou abrindo'
+          checked={props.hasStore === 'Estou abrindo'}
+        />
+      </div>
     </div>
     <label style={labelStyle}>Quanto pagaria por uma peça, no máximo?</label>
     <div style={radioFormStyle}>

@@ -134,7 +134,7 @@ export default class Cadastro extends React.Component {
       // send lead information to Okta API and Google spreadsheet
       this.setState({ loadingSubmit: true })
       axios({
-        url: `https://zirodata.now.sh?
+        url: `https://ziro-data.now.sh?
 					type=lojistas&
 					firstName=${this.state.firstName}&
 					lastName=${this.state.lastName}&

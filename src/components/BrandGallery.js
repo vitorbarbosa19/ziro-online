@@ -39,7 +39,9 @@ export default class BrandGallery extends React.Component {
     window.removeEventListener('scroll', this.lazyLoading)
   }
   lazyLoading() {
-    if (this.state.next && (window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+    // in the future add loading icon to indicate that more photos are being fetched when bottom is reached
+    if (this.state.next && (window.innerHeight + window.scrollY) >= 0.9 * document.body.offsetHeight) {
+      window.removeEventListener('scroll', this.lazyLoading)
       cloudinaryApi.getBrandGallery(this.props.brand, this.state.next)
         .then((response) => {
           this.setState((prevState) => {
@@ -48,7 +50,7 @@ export default class BrandGallery extends React.Component {
               allPhotos: prevState.allPhotos,
               next: response.data.next_cursor
             }
-          })
+          }, () => { window.addEventListener('scroll', this.lazyLoading) })
         })
         .catch((error) => {
           console.log(error.response)
