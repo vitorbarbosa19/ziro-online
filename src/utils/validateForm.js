@@ -1,6 +1,11 @@
 export default (statesObject) => {
-  const formStatesArray = Object.values(statesObject).splice(0, 9) // there are 9 fields in the form
-  return formStatesArray.every((state) => {
-    return state !== ''
-  })
+	const { firstName, lastName, email, whatsapp, hasStore, maxPay, referral, when } = statesObject
+	const firstNameIsValid = Boolean(firstName)
+	const lastNameIsValid = Boolean(lastName)
+	const emailIsValid = Boolean(email) && email.includes('@') && email.includes('.com')
+	return {
+		firstNameIsValid: firstNameIsValid,
+		lastNameIsValid: lastNameIsValid,
+		emailIsValid: emailIsValid
+	}
 }

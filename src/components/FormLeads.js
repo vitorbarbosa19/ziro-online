@@ -10,7 +10,7 @@ export default (props) => (
       alignItems: 'center'
     }}
     onChange={props.handleForm}>
-    <label style={{ fontSize: '18px', margin: '30px 0 10px' }}>Qual o seu nome?</label>
+    <label style={{ fontSize: '18px', margin: '30px 0 10px' }}>Qual o seu primeiro nome?</label>
     <input
       style={inputStyle}
       type='text'

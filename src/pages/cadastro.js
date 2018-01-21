@@ -28,7 +28,11 @@ export default class Cadastro extends React.Component {
       isCnpjAlreadyRegistered: false,
       errorValidatingCNPJ: false,
       errorNetwork: false,
-      errorSubmit: false
+      errorSubmit: false,
+      /* error messages */
+      errorFirstName: '',
+      errorLastName: '',
+      errorEmail: '',
     }
     this.handleCNPJ = this.handleCNPJ.bind(this)
     this.verifyCNPJ = this.verifyCNPJ.bind(this)
@@ -130,7 +134,20 @@ export default class Cadastro extends React.Component {
   }
   handleSubmit(event) {
     event.preventDefault()
-    if (validateForm(this.state)) {
+    const { firstNameIsValid, lastNameIsValid, emailIsValid } = validateForm(this.state)
+    firstNameIsValid ?
+      this.setState({ errorFirstName: '' })
+    :
+      this.setState({ errorFirstName: 'Preencha esse campo' })
+    lastNameIsValid ?
+      this.setState({ errorLastName: '' })
+    :
+      this.setState({ errorLastName: 'Preencha esse campo' })
+    emailIsValid ? 
+      this.setState({ errorEmail: '' })
+    :
+      this.setState({ errorEmail: 'Formato inválido' })
+    if (firstNameIsValid && lastNameIsValid && emailIsValid) {
       // send lead information to Okta API and Google spreadsheet
       this.setState({ loadingSubmit: true })
       axios({
@@ -165,7 +182,7 @@ export default class Cadastro extends React.Component {
           console.log(error)
         })
     } else {
-      alert('Preencha todos os campos de cadastro!')
+      alert('Corrija os erros!')
     }
   }
   handleGoBack(event) {
