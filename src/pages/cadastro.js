@@ -62,8 +62,6 @@ export default class Cadastro extends React.Component {
         const cnpjAlreadyRegistered = sheetResponse.data.values.splice(1, sheetResponse.data.values.length).map((leadInfo) => {
           return leadInfo[5]
         }).find((cnpj) => {
-          console.log(cnpj)
-          console.log(cnpj.replace(/\W/g, ''))
           return (cnpj.replace(/\W/g, '') === this.state.CNPJ.toString())
         })
         if (cnpjAlreadyRegistered) {
@@ -196,30 +194,18 @@ export default class Cadastro extends React.Component {
       const formattedLName = this.state.lastName.trim().charAt(0).toUpperCase() + this.state.lastName.trim().toLowerCase().substr(1)
       // send lead information to Okta API and Google spreadsheet
       this.setState({ loadingSubmit: true })
-      axios({
-        url: `https://ziro-data.now.sh?
-					type=lojistas&
-					firstName=${formattedFName}&
-					lastName=${formattedLName}&
-					name=${formattedFName + ' ' + formattedLName}&
-					cnpj=${this.state.CNPJ.toString()}&
-					email=${this.state.email}&
-					whatsapp=${this.state.whatsapp}&
-					hasStore=${this.state.hasStore}&
-					maxPay=${this.state.maxPay}&
-					referral=${this.state.referral}&
-					when=${this.state.when}&
-          monthSpend=${this.state.monthSpend}`,
-          method: 'post'
-      })
+      axios({ url: `https://ziro-data.now.sh?type=okta&firstName=${formattedFName}&lastName=${formattedLName}&email=${this.state.email}&cnpj=${this.state.CNPJ}` })
         .then((response) => {
-          this.setState({
-            loadingSubmit: false
-          })
-          console.log(response)
-          // It might happen to alert user the signup was a success when it was not
-          alert('Cadastro enviado!')
-          this.props.history.push('/conta-criada')
+          axios({ url: `https://ziro-data.now.sh?type=lojistas&cadastro=${response.data.id}&dataCadastro=${response.data.created}&lojista=${formattedFName + ' ' + formattedLName}&cnpj=${this.state.CNPJ}&email=${this.state.email}&whatsapp=${this.state.whatsapp}&hasStore=${this.state.hasStore}&maxPay=${this.state.maxPay}&referral=${this.state.referral}&when=${this.state.when}&monthSpend=${this.state.monthSpend}` })
+            .then((response) => {
+              this.setState({
+                loadingSubmit: false
+              })
+              console.log(response)
+              // It might happen to alert user the signup was a success when it was not
+              alert('Cadastro enviado!')
+              this.props.history.push('/conta-criada')
+            })
         })
         .catch((error) => {
           this.setState({
