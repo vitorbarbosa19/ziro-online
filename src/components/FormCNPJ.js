@@ -9,12 +9,12 @@ export default (props) => (
       flexDirection: 'column',
       alignItems: 'center'
     }}>
-    <p style={{ fontFamily: 'karla', fontSize: '10px', margin: '0', color: 'rgba(0,0,0,0.5)' }}>CNPJ com apenas números</p>
+    <p style={{ fontFamily: 'karla', fontSize: '12px', margin: '0', color: 'rgba(0,0,0,0.5)' }}>{formatCNPJ(props.CNPJ)}</p>
     <input
       style={inputStyle}
-      type='text'
+      type='number'
       name='CNPJ'
-      value={formatCNPJ(props.CNPJ)}
+      value={props.CNPJ}
       onChange={props.handleCNPJ}
       placeholder='CNPJ...'
     />

@@ -1,9 +1,4 @@
 export default (cnpjNumber) => {
-  if (cnpjNumber.replace(/\W/g, '').length === 14) {
-    return cnpjNumber.slice(0, 2) + '.' + cnpjNumber.slice(2, 5) + '.' + cnpjNumber.slice(5, 8) + '/' + cnpjNumber.slice(8, 12) + '-' + cnpjNumber.slice(12, 14)
-  }
-  if (cnpjNumber.replace(/\W/g, '').length > 14) {
-  	return cnpjNumber.slice(0, 2) + '.' + cnpjNumber.slice(2, 5) + '.' + cnpjNumber.slice(5, 8) + '/' + cnpjNumber.slice(8, 12) + '-' + cnpjNumber.slice(12, 14)
-  }
-  return cnpjNumber
+	const chars = cnpjNumber.split('')
+  return `${(chars[0] || '0')}${(chars[1] || '0')}.${(chars[2] || '0')}${(chars[3] || '0')}${(chars[4] || '0')}.${(chars[5] || '0')}${(chars[6] || '0')}${(chars[7] || '0')}/${(chars[8] || '0')}${(chars[9] || '0')}${(chars[10] || '0')}${(chars[11] || '0')}-${(chars[12] || '0')}${(chars[13] || '0')}`
 }
