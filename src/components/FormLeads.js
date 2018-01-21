@@ -63,6 +63,15 @@ export default (props) => (
       placeholder='Email...'
     />
     <label style={labelStyle}>Qual o seu número de WhatsApp (com DDD)?</label>
+    <label style={{ 
+      display: 'flex',
+      alignItems: 'center',
+      padding: '8px 8px 0px',
+      fontSize: '13px',
+      fontWeight: '700',
+      color: '#F16B6F'}}>
+        {props.errorWhatsapp ? AlertIcon(16,16) : null}&nbsp;{props.errorWhatsapp}
+    </label>
     <input
       style={inputStyle}
       type='tel'
@@ -71,6 +80,15 @@ export default (props) => (
       placeholder='WhatsApp...'
     />
     <label style={labelStyle}>Você tem loja física?</label>
+    <label style={{ 
+      display: 'flex',
+      alignItems: 'center',
+      padding: '8px 8px 0px',
+      fontSize: '13px',
+      fontWeight: '700',
+      color: '#F16B6F'}}>
+        {props.errorHasStore ? AlertIcon(16,16) : null}&nbsp;{props.errorHasStore}
+    </label>
     <div style={radioFormStyle}>
       <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <label style={{ fontSize: '14px' }}>Sim</label>
@@ -104,6 +122,15 @@ export default (props) => (
       </div>
     </div>
     <label style={labelStyle}>Quanto pagaria por uma peça, no máximo?</label>
+    <label style={{ 
+      display: 'flex',
+      alignItems: 'center',
+      padding: '8px 8px 0px',
+      fontSize: '13px',
+      fontWeight: '700',
+      color: '#F16B6F'}}>
+        {props.errorMaxPay ? AlertIcon(16,16) : null}&nbsp;{props.errorMaxPay}
+    </label>
     <div style={radioFormStyle}>
       <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <label style={{ fontSize: '14px' }}>Até R$59,00</label>
@@ -116,17 +143,17 @@ export default (props) => (
         />
       </div>
       <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <label style={{ marginRight: '30px', fontSize: '14px' }}>Entre R$59,00 e R$200,00</label>
+        <label style={{ marginRight: '30px', fontSize: '14px' }}>Até R$200,00</label>
         <input
           className='lead-form-input-radio'
           type='radio'
           name='maxPay'
-          value='Entre R$59,00 e R$200,00'
-          checked={props.maxPay === 'Entre R$59,00 e R$200,00'}
+          value='Até R$200,00'
+          checked={props.maxPay === 'Até R$200,00'}
         />
       </div>
       <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <label style={{ fontSize: '14px' }}>Acima de R$200,00</label>
+        <label style={{ fontSize: '14px' }}>Acima de R$200,00&nbsp;&nbsp;</label>
         <input
           className='lead-form-input-radio'
           type='radio'
@@ -137,6 +164,15 @@ export default (props) => (
       </div>
     </div>
     <label style={labelStyle}>Como descobriu o catálogo online da Ziro?</label>
+    <label style={{ 
+      display: 'flex',
+      alignItems: 'center',
+      padding: '8px 8px 0px',
+      fontSize: '13px',
+      fontWeight: '700',
+      color: '#F16B6F'}}>
+        {props.errorReferral ? AlertIcon(16,16) : null}&nbsp;{props.errorReferral}
+    </label>
     <div style={radioFormStyle}>
       <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <label style={{ fontSize: '14px' }}>Instagram</label>
@@ -191,40 +227,107 @@ export default (props) => (
     </div>
     {props.referral === 'Já sou cliente'
       ? null
-      : <label style={labelStyle}>Quando pretende comprar?</label>
+      : 
+      <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '70px', marginBottom: '10px'}}>
+        <label style={{fontSize: '18px'}}>Quando pretende comprar?</label>
+        <label style={{ 
+          display: 'flex',
+          alignItems: 'center',
+          padding: '8px 8px 0px',
+          fontSize: '13px',
+          fontWeight: '700',
+          color: '#F16B6F'}}>
+            {props.errorWhen ? AlertIcon(16,16) : null}&nbsp;{props.errorWhen}
+        </label>
+        <div style={radioFormStyle}>
+          <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <label style={{ fontSize: '14px' }}>O quanto antes</label>
+            <input
+              className='lead-form-input-radio'
+              type='radio'
+              name='when'
+              value='O quanto antes'
+              checked={props.when === 'O quanto antes'}
+            />
+          </div>
+          <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <label style={{ fontSize: '14px' }}>Em até 3 meses</label>
+            <input
+              className='lead-form-input-radio'
+              type='radio'
+              name='when'
+              value='Em até 3 meses'
+              checked={props.when === 'Em até 3 meses'}
+            />
+          </div>
+          <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <label style={{ marginRight: '30px', fontSize: '14px' }}>Ainda não sei</label>
+            <input
+              className='lead-form-input-radio'
+              type='radio'
+              name='when'
+              value='Ainda não sei'
+              checked={props.when === 'Ainda não sei'}
+            />
+          </div>
+        </div>
+      </div>
     }
     {props.referral === 'Já sou cliente'
       ? null
-      : <div style={radioFormStyle}>
-        <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <label style={{ fontSize: '14px' }}>O quanto antes</label>
-          <input
-            className='lead-form-input-radio'
-            type='radio'
-            name='when'
-            value='O quanto antes'
-            checked={props.when === 'O quanto antes'}
-          />
-        </div>
-        <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <label style={{ fontSize: '14px' }}>Em até 3 meses</label>
-          <input
-            className='lead-form-input-radio'
-            type='radio'
-            name='when'
-            value='Em até 3 meses'
-            checked={props.when === 'Em até 3 meses'}
-          />
-        </div>
-        <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <label style={{ marginRight: '30px', fontSize: '14px' }}>Ainda não sei, estou pesquisando</label>
-          <input
-            className='lead-form-input-radio'
-            type='radio'
-            name='when'
-            value='Ainda não sei, estou pesquisando'
-            checked={props.when === 'Ainda não sei, estou pesquisando'}
-          />
+      : 
+      <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '70px', marginBottom: '10px'}}>
+        <label style={{fontSize: '18px'}}>Quanto pretende gastar por mês?</label>
+        <label style={{ 
+          display: 'flex',
+          alignItems: 'center',
+          padding: '8px 8px 0px',
+          fontSize: '13px',
+          fontWeight: '700',
+          color: '#F16B6F'}}>
+            {props.errorMonthSpend ? AlertIcon(16,16) : null}&nbsp;{props.errorMonthSpend}
+        </label>
+        <div style={radioFormStyle}>
+          <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <label style={{ fontSize: '14px' }}>Até R$ 5.000,00</label>
+            <input
+              className='lead-form-input-radio'
+              type='radio'
+              name='monthSpend'
+              value='Até R$ 5.000,00'
+              checked={props.monthSpend === 'Até R$ 5.000,00'}
+            />
+          </div>
+          <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <label style={{ fontSize: '14px' }}>Até R$ 15.000,00</label>
+            <input
+              className='lead-form-input-radio'
+              type='radio'
+              name='monthSpend'
+              value='Até R$ 15.000,00'
+              checked={props.monthSpend === 'Até R$ 15.000,00'}
+            />
+          </div>
+          <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <label style={{ fontSize: '14px' }}>Acima de R$ 15.000,00&nbsp;&nbsp;</label>
+            <input
+              className='lead-form-input-radio'
+              type='radio'
+              name='monthSpend'
+              value='Acima de R$ 15.000,00'
+              checked={props.monthSpend === 'Acima de R$ 15.000,00'}
+            />
+          </div>
+          <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <label style={{ marginRight: '30px', fontSize: '14px' }}>Ainda não sei</label>
+            <input
+              className='lead-form-input-radio'
+              type='radio'
+              name='monthSpend'
+              value='Ainda não sei'
+              checked={props.monthSpend === 'Ainda não sei'}
+            />
+          </div>
         </div>
       </div>
     }

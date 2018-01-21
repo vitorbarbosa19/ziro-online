@@ -36,10 +36,17 @@ export default (props) => (
           maxPay={props.maxPay}
           referral={props.referral}
           when={props.when}
+          monthSpend={props.monthSpend}
           /* Error messages */
           errorFirstName={props.errorFirstName}
           errorLastName={props.errorLastName}
           errorEmail={props.errorEmail}
+          errorWhatsapp={props.errorWhatsapp}
+          errorHasStore={props.errorHasStore}
+          errorMaxPay={props.errorMaxPay}
+          errorReferral={props.errorReferral}
+          errorWhen={props.errorWhen}
+          errorMonthSpend={props.errorMonthSpend}
         />
       </div>
     }

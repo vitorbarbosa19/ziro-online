@@ -22,6 +22,7 @@ export default class Cadastro extends React.Component {
       maxPay: '',
       referral: '',
       when: '',
+      monthSpend: '',
       loadingCNPJ: false,
       loadingSubmit: false,
       cnpjValidated: false,
@@ -33,6 +34,12 @@ export default class Cadastro extends React.Component {
       errorFirstName: '',
       errorLastName: '',
       errorEmail: '',
+      errorWhatsapp: '',
+      errorHasStore: '',
+      errorMaxPay: '',
+      errorReferral: '',
+      errorWhen: '',
+      errorMonthSpend: ''
     }
     this.handleCNPJ = this.handleCNPJ.bind(this)
     this.verifyCNPJ = this.verifyCNPJ.bind(this)
@@ -113,7 +120,7 @@ export default class Cadastro extends React.Component {
       this.setState({ email: event.target.value })
       break
     case 'whatsapp':
-      this.setState({ whatsapp: event.target.value })
+      this.setState({ whatsapp: event.target.value.replace(/\W/g, '') })
       break
     case 'hasStore':
       this.setState({ hasStore: event.target.value })
@@ -123,18 +130,23 @@ export default class Cadastro extends React.Component {
       break
     case 'referral':
       if (event.target.value === 'Já sou cliente') {
-        this.setState({ referral: event.target.value, when: 'N/A - Já era cliente' })
+        this.setState({ referral: event.target.value, when: 'N/A - Já era cliente', monthSpend: 'N/A - Já era cliente' })
       } else	{
         this.setState({ referral: event.target.value })
       }
       break
     case 'when':
       this.setState({ when: event.target.value })
+      break
+    case 'monthSpend':
+      this.setState({ monthSpend: event.target.value })
+      break
     }
   }
   handleSubmit(event) {
     event.preventDefault()
-    const { firstNameIsValid, lastNameIsValid, emailIsValid } = validateForm(this.state)
+    const { firstNameIsValid, lastNameIsValid, emailIsValid, whatsappIsValid,
+      hasStoreIsValid, maxPayIsValid, referralIsValid, whenIsValid, monthSpendIsValid } = validateForm(this.state)
     firstNameIsValid ?
       this.setState({ errorFirstName: '' })
     :
@@ -147,7 +159,31 @@ export default class Cadastro extends React.Component {
       this.setState({ errorEmail: '' })
     :
       this.setState({ errorEmail: 'Formato inválido' })
-    if (firstNameIsValid && lastNameIsValid && emailIsValid) {
+    whatsappIsValid ? 
+      this.setState({ errorWhatsapp: '' })
+    :
+      this.setState({ errorWhatsapp: 'Deve ter 10 ou 11 dígitos' })
+    hasStoreIsValid ? 
+      this.setState({ errorHasStore: '' })
+    :
+      this.setState({ errorHasStore: 'Escolha uma opção' })
+    maxPayIsValid ? 
+      this.setState({ errorMaxPay: '' })
+    :
+      this.setState({ errorMaxPay: 'Escolha uma opção' })
+    referralIsValid ? 
+      this.setState({ errorReferral: '' })
+    :
+      this.setState({ errorReferral: 'Escolha uma opção' })
+    whenIsValid ? 
+      this.setState({ errorWhen: '' })
+    :
+      this.setState({ errorWhen: 'Escolha uma opção' })
+    monthSpendIsValid ? 
+      this.setState({ errorMonthSpend: '' })
+    :
+      this.setState({ errorMonthSpend: 'Escolha uma opção' })
+    if (firstNameIsValid && lastNameIsValid && emailIsValid && whatsappIsValid && hasStoreIsValid && maxPayIsValid && referralIsValid && whenIsValid && monthSpendIsValid) {
       // send lead information to Okta API and Google spreadsheet
       this.setState({ loadingSubmit: true })
       axios({
@@ -163,7 +199,7 @@ export default class Cadastro extends React.Component {
 					maxPay=${this.state.maxPay}&
 					referral=${this.state.referral}&
 					when=${this.state.when}`,
-        method: 'post'
+          method: 'post'
       })
         .then((response) => {
           this.setState({
@@ -221,10 +257,17 @@ export default class Cadastro extends React.Component {
                             maxPay={this.state.maxPay}
                             referral={this.state.referral}
                             when={this.state.when}
+                            monthSpend={this.state.monthSpend}
                           /*  Error messages  */
                             errorFirstName={this.state.errorFirstName}
                             errorLastName={this.state.errorLastName}
                             errorEmail={this.state.errorEmail}
+                            errorWhatsapp={this.state.errorWhatsapp}
+                            errorHasStore={this.state.errorHasStore}
+                            errorMaxPay={this.state.errorMaxPay}
+                            errorReferral={this.state.errorReferral}
+                            errorWhen={this.state.errorWhen}
+                            errorMonthSpend={this.state.errorMonthSpend}
 										      />
 										    }
 								      </div>
