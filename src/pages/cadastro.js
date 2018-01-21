@@ -109,37 +109,42 @@ export default class Cadastro extends React.Component {
       })
   }
   handleForm(event) {
+    const value = event.target.value
     switch (event.target.name) {
     case 'firstName':
-      this.setState({ firstName: event.target.value })
+      this.setState({ firstName: value })
       break
     case 'lastName':
-      this.setState({ lastName: event.target.value })
+      this.setState({ lastName: value })
       break
     case 'email':
-      this.setState({ email: event.target.value })
+      this.setState({ email: value })
       break
     case 'whatsapp':
-      this.setState({ whatsapp: event.target.value.replace(/\W/g, '') })
+      this.setState({ whatsapp: value.replace(/\W/g, '') })
       break
     case 'hasStore':
-      this.setState({ hasStore: event.target.value })
+      this.setState({ hasStore: value })
       break
     case 'maxPay':
-      this.setState({ maxPay: event.target.value })
+      this.setState({ maxPay: value })
       break
     case 'referral':
-      if (event.target.value === 'Já sou cliente') {
-        this.setState({ referral: event.target.value, when: 'N/A - Já era cliente', monthSpend: 'N/A - Já era cliente' })
+      if (value === 'Já sou cliente') {
+        this.setState({ referral: value, when: 'N/A - Já era cliente', monthSpend: 'N/A - Já era cliente' })
       } else	{
-        this.setState({ referral: event.target.value })
+        this.setState((prevState) => {
+          if (prevState.referral === 'Já sou cliente')
+            return { referral: value, when: '', monthSpend: '' }
+          return { referral: value }
+        })
       }
       break
     case 'when':
-      this.setState({ when: event.target.value })
+      this.setState({ when: value })
       break
     case 'monthSpend':
-      this.setState({ monthSpend: event.target.value })
+      this.setState({ monthSpend: value })
       break
     }
   }
@@ -184,21 +189,25 @@ export default class Cadastro extends React.Component {
     :
       this.setState({ errorMonthSpend: 'Escolha uma opção' })
     if (firstNameIsValid && lastNameIsValid && emailIsValid && whatsappIsValid && hasStoreIsValid && maxPayIsValid && referralIsValid && whenIsValid && monthSpendIsValid) {
+      // format first and last name properly
+      const formattedFName = this.state.firstName.trim().charAt(0).toUpperCase() + this.state.firstName.trim().toLowerCase().substr(1)
+      const formattedLName = this.state.lastName.trim().charAt(0).toUpperCase() + this.state.lastName.trim().toLowerCase().substr(1)
       // send lead information to Okta API and Google spreadsheet
       this.setState({ loadingSubmit: true })
       axios({
         url: `https://ziro-data.now.sh?
 					type=lojistas&
-					firstName=${this.state.firstName}&
-					lastName=${this.state.lastName}&
-					name=${this.state.firstName + '' + this.state.lastName}&
-					cnpj=${this.state.CNPJ}&
+					firstName=${formattedFName}&
+					lastName=${formattedLName}&
+					name=${formattedFName + ' ' + formattedLName}&
+					cnpj=${this.state.CNPJ.toString()}&
 					email=${this.state.email}&
 					whatsapp=${this.state.whatsapp}&
 					hasStore=${this.state.hasStore}&
 					maxPay=${this.state.maxPay}&
 					referral=${this.state.referral}&
-					when=${this.state.when}`,
+					when=${this.state.when}&
+          monthSpend=${this.state.monthSpend}`,
           method: 'post'
       })
         .then((response) => {
