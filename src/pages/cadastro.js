@@ -221,6 +221,10 @@ export default class Cadastro extends React.Component {
                             maxPay={this.state.maxPay}
                             referral={this.state.referral}
                             when={this.state.when}
+                          /*  Error messages  */
+                            errorFirstName={this.state.errorFirstName}
+                            errorLastName={this.state.errorLastName}
+                            errorEmail={this.state.errorEmail}
 										      />
 										    }
 								      </div>

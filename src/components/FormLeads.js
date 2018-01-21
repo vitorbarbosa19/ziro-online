@@ -1,4 +1,5 @@
 import React from 'react'
+import AlertIcon from './AlertIcon'
 import { inputStyle, labelStyle, buttonStyleDark, radioFormStyle } from '../styles/styles'
 
 export default (props) => (
@@ -11,6 +12,15 @@ export default (props) => (
     }}
     onChange={props.handleForm}>
     <label style={{ fontSize: '18px', margin: '30px 0 10px' }}>Qual o seu primeiro nome?</label>
+    <label style={{ 
+      display: 'flex',
+      alignItems: 'center',
+      padding: '8px 8px 0px',
+      fontSize: '13px',
+      fontWeight: '700',
+      color: '#F16B6F'}}>
+        {props.errorFirstName ? AlertIcon(16,16) : null}&nbsp;{props.errorFirstName}
+    </label>
     <input
       style={inputStyle}
       type='text'
@@ -19,6 +29,15 @@ export default (props) => (
       placeholder='Nome...'
     />
     <label style={labelStyle}>Qual o seu último nome?</label>
+    <label style={{ 
+      display: 'flex',
+      alignItems: 'center',
+      padding: '8px 8px 0px',
+      fontSize: '13px',
+      fontWeight: '700',
+      color: '#F16B6F'}}>
+        {props.errorLastName ? AlertIcon(16,16) : null}&nbsp;{props.errorLastName}
+    </label>
     <input
       style={inputStyle}
       type='text'
@@ -27,6 +46,15 @@ export default (props) => (
       placeholder='Sobrenome...'
     />
     <label style={labelStyle}>Qual o seu email?</label>
+    <label style={{ 
+      display: 'flex',
+      alignItems: 'center',
+      padding: '8px 8px 0px',
+      fontSize: '13px',
+      fontWeight: '700',
+      color: '#F16B6F'}}>
+        {props.errorEmail ? AlertIcon(16,16) : null}&nbsp;{props.errorEmail}
+    </label>
     <input
       style={inputStyle}
       type='email'
