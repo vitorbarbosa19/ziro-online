@@ -18,6 +18,7 @@ export default (props) => (
           CNPJ={props.CNPJ}
           handleCNPJ={props.handleCNPJ}
           verifyCNPJ={props.verifyCNPJ}
+          errorCnpj={props.errorCnpj}
         />
       </div>
       : <div>

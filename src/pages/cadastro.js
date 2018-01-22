@@ -31,6 +31,7 @@ export default class Cadastro extends React.Component {
       errorNetwork: false,
       errorSubmit: false,
       /* error messages */
+      errorCnpj: '',
       errorFirstName: '',
       errorLastName: '',
       errorEmail: '',
@@ -54,59 +55,66 @@ export default class Cadastro extends React.Component {
   }
   verifyCNPJ(event) {
     event.preventDefault()
-    this.setState({
-      loadingCNPJ: true
-    })
-    axios.get(`https://sheets.googleapis.com/v4/spreadsheets/${process.env.RESELLER_SHEET_ID || process.env.GATSBY_RESELLER_SHEET_ID}/values/lojistas?key=${process.env.GOOGLE_API_KEY || process.env.GATSBY_GOOGLE_API_KEY}`)
-      .then((sheetResponse) => {
-        const cnpjAlreadyRegistered = sheetResponse.data.values.splice(1, sheetResponse.data.values.length).map((leadInfo) => {
-          return leadInfo[5]
-        }).find((cnpj) => {
-          return (cnpj.replace(/\W/g, '') === this.state.CNPJ.toString())
-        })
-        if (cnpjAlreadyRegistered) {
-          this.setState({
-            isCnpjAlreadyRegistered: true,
-            loadingCNPJ: false
-          })
-        } else {
-          return axios.get(`https://zirocnpj.now.sh?cnpj=${this.state.CNPJ}`)
-            .then((response) => {
-              console.log('Validação CNPJ:', response)
-              this.setState({
-                loadingCNPJ: false
-              })
-              if (response.data.status === 'ERROR') {
-                this.setState({ errorValidatingCNPJ: true })
-              } else {
-                const isActivityValidated = !listAllCompanyActivities(response.data.atividade_principal, response.data.atividades_secundarias).map((activity) => {
-                  if (activity !== '47.81-4-00') {
-                    return true
-                  }
-                }).every((activityCondition) => {
-                  return activityCondition === true
-                })
-                if (isActivityValidated && response.data.situacao === 'ATIVA') {
-                  this.setState({
-                    cnpjValidated: true
-                  })
-                } else {
-                  this.setState({
-                    errorValidatingCNPJ: true
-                  })
-                }
-              }
-            })
-            .catch((error) => {
-              console.log(error)
-              this.setState({
-                loadingCNPJ: false,
-                errorValidatingCNPJ: true,
-                errorNetwork: true
-              })
-            })
-        }
+    const cnpjFieldIsValid = this.state.CNPJ.toString().length === 14
+    cnpjFieldIsValid ?
+      this.setState({ errorCnpj: '' })
+    :
+      this.setState({ errorCnpj: 'Deve ter 14 dígitos' })
+    if(cnpjFieldIsValid) {
+      this.setState({
+        loadingCNPJ: true
       })
+      axios.get(`https://sheets.googleapis.com/v4/spreadsheets/${process.env.RESELLER_SHEET_ID || process.env.GATSBY_RESELLER_SHEET_ID}/values/lojistas?key=${process.env.GOOGLE_API_KEY || process.env.GATSBY_GOOGLE_API_KEY}`)
+        .then((sheetResponse) => {
+          const cnpjAlreadyRegistered = sheetResponse.data.values.splice(1, sheetResponse.data.values.length).map((leadInfo) => {
+            return leadInfo[5]
+          }).find((cnpj) => {
+            return (cnpj.replace(/\W/g, '') === this.state.CNPJ.toString())
+          })
+          if (cnpjAlreadyRegistered) {
+            this.setState({
+              isCnpjAlreadyRegistered: true,
+              loadingCNPJ: false
+            })
+          } else {
+            return axios.get(`https://zirocnpj.now.sh?cnpj=${this.state.CNPJ}`)
+              .then((response) => {
+                console.log('Validação CNPJ:', response)
+                this.setState({
+                  loadingCNPJ: false
+                })
+                if (response.data.status === 'ERROR') {
+                  this.setState({ errorValidatingCNPJ: true })
+                } else {
+                  const isActivityValidated = !listAllCompanyActivities(response.data.atividade_principal, response.data.atividades_secundarias).map((activity) => {
+                    if (activity !== '47.81-4-00') {
+                      return true
+                    }
+                  }).every((activityCondition) => {
+                    return activityCondition === true
+                  })
+                  if (isActivityValidated && response.data.situacao === 'ATIVA') {
+                    this.setState({
+                      cnpjValidated: true
+                    })
+                  } else {
+                    this.setState({
+                      errorValidatingCNPJ: true
+                    })
+                  }
+                }
+              })
+              .catch((error) => {
+                console.log(error)
+                this.setState({
+                  loadingCNPJ: false,
+                  errorValidatingCNPJ: true,
+                  errorNetwork: true
+                })
+              })
+          }
+        })
+    }
   }
   handleForm(event) {
     const value = event.target.value
@@ -256,6 +264,7 @@ export default class Cadastro extends React.Component {
                             when={this.state.when}
                             monthSpend={this.state.monthSpend}
                           /*  Error messages  */
+                            errorCnpj={this.state.errorCnpj}
                             errorFirstName={this.state.errorFirstName}
                             errorLastName={this.state.errorLastName}
                             errorEmail={this.state.errorEmail}
