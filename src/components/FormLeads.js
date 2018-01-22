@@ -251,23 +251,13 @@ export default (props) => (
             />
           </div>
           <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <label style={{ fontSize: '14px' }}>Em até 3 meses</label>
+            <label style={{ fontSize: '14px' }}>Em até 3 meses&nbsp;&nbsp;</label>
             <input
               className='lead-form-input-radio'
               type='radio'
               name='when'
               value='Em até 3 meses'
               checked={props.when === 'Em até 3 meses'}
-            />
-          </div>
-          <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <label style={{ marginRight: '30px', fontSize: '14px' }}>Ainda não sei</label>
-            <input
-              className='lead-form-input-radio'
-              type='radio'
-              name='when'
-              value='Ainda não sei'
-              checked={props.when === 'Ainda não sei'}
             />
           </div>
         </div>
@@ -316,16 +306,6 @@ export default (props) => (
               name='monthSpend'
               value='Acima de R$ 15.000,00'
               checked={props.monthSpend === 'Acima de R$ 15.000,00'}
-            />
-          </div>
-          <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <label style={{ marginRight: '30px', fontSize: '14px' }}>Ainda não sei</label>
-            <input
-              className='lead-form-input-radio'
-              type='radio'
-              name='monthSpend'
-              value='Ainda não sei'
-              checked={props.monthSpend === 'Ainda não sei'}
             />
           </div>
         </div>
