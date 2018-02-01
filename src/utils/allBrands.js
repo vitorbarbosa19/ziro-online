@@ -154,6 +154,7 @@ export default [
   'Mias',
   'Milalai',
   'Minerale',
+  'Minha Grife',
   'Miss Chilli',
   'Miss Cigarrete',
   'Miss Misses',

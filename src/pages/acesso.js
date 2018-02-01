@@ -47,12 +47,12 @@ export default () => (
       <Link
         to='/cadastro'
         style={buttonStyleDark}>
-		  				Cadastrar CNPJ
+		  			Cadastrar CNPJ
 		  		</Link>
       <Link
         to='/login'
         style={buttonStyleGhost}>
-		  				Retornando? Fazer login
+		  			Fazer login
 		  		</Link>
     </div>
   </div>
