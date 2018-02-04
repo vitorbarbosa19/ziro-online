@@ -34,7 +34,7 @@ module.exports = class HTML extends React.Component {
           <meta property='og:url' content='https://ziro.online' />
           <meta property='og:type' content='website' />
           <meta property='og:title' content='Ziro' />
-          <meta property='og:description' content='O maior catálogo de roupas do Bom Retiro' />
+          <meta property='og:description' content='O maior catálogo de roupas do Brasil' />
           <meta property='og:image' content='https://res.cloudinary.com/ziro/image/upload/v1516321831/ziro-image_yribev.jpg' />
           <meta property='og:image:alt' content='Moda feminina' />
           <meta property='og:locale' content='pt_BR' />
