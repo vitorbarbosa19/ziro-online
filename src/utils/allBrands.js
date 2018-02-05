@@ -185,6 +185,7 @@ export default [
   'Mosaique',
   'MPK',
   'Murau',
+  'Muse',
   'MX',
   'Namine',
   'Nanaminze',
