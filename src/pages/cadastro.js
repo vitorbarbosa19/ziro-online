@@ -65,9 +65,9 @@ export default class Cadastro extends React.Component {
         loadingCNPJ: true
       })
       axios.get(`https://sheets.googleapis.com/v4/spreadsheets/${process.env.RESELLER_SHEET_ID || process.env.GATSBY_RESELLER_SHEET_ID}/values/lojistas?key=${process.env.GOOGLE_API_KEY || process.env.GATSBY_GOOGLE_API_KEY}`)
-        .then((sheetResponse) => {
-          const cnpjAlreadyRegistered = sheetResponse.data.values.splice(1, sheetResponse.data.values.length).map((leadInfo) => {
-            return leadInfo[5]
+        .then(({ data: { values } }) => {
+          const cnpjAlreadyRegistered = values.splice(1, values.length).map((leadInfo) => {
+            return leadInfo[7]
           }).find((cnpj) => {
             return (cnpj.replace(/\W/g, '') === this.state.CNPJ.toString())
           })
