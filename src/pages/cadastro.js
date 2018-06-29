@@ -93,7 +93,7 @@ export default class Cadastro extends React.Component {
                   }).every((activityCondition) => {
                     return activityCondition === true
                   })
-                  if (isActivityValidated && response.data.situacao === 'ATIVA') {
+                  if (isActivityValidated && response.data.situacao.toUpperCase() === 'ATIVA') {
                     this.setState({
                       cnpjValidated: true
                     })
