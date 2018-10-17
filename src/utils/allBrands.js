@@ -152,7 +152,6 @@ export default [
 'Kesses',
 'Kitson',
 'Knit',
-'KWI',
 'La Chocole',
 'La Folie',
 'La Mora',
