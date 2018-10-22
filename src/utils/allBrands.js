@@ -268,6 +268,7 @@ export default [
 'Swany',
 'Talgui',
 'Talita Kume',
+'Teclin',
 'Testoni',
 'Thacci',
 'The Bloom',
