@@ -29,7 +29,7 @@ export default (props) => (
       <p>Sugerimos que tente enviar o formulário novamente mais tarde.</p>
       <p>Se continuar encontrando problemas, mande um Whatsapp pra gente:&nbsp;
         <strong>
-          <a style={{ textDecoration: 'underline' }} href='tel:-11-98176-8088'>(11) 98176-8088</a>
+          <a style={{ textDecoration: 'underline' }} href='tel:-11-95349-7908'>(11) 95349-7908</a>
         </strong>&nbsp;
         <WhatsappIcon />
       </p>

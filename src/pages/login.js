@@ -52,7 +52,7 @@ export default class Login extends React.Component {
     (response) => {
       console.log('LOGIN:', response)
       if (response.status !== 'SUCCESS') {
-        alert('Erro no sistema! Entre em contato conosco via WhatsApp: (11) 98176-8088')
+        alert('Erro no sistema! Entre em contato conosco via WhatsApp: (11) 95349-7908')
       }
       if (response.claims) {
         this.props.updateUserAndRedirect(response.claims.sub)

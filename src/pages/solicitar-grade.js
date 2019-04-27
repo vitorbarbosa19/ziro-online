@@ -40,7 +40,7 @@ export default () => (
       <li style={{ paddingLeft: '10px' }}>
         Adicione em seu Whatsapp o nosso número:&nbsp;
         <strong>
-          <a style={{ textDecoration: 'underline', paddingLeft: '2px' }} href='tel:-11-98176-8088'>(11) 98176-8088</a>
+          <a style={{ textDecoration: 'underline', paddingLeft: '2px' }} href='tel:-11-95349-7908'>(11) 95349-7908</a>
         </strong>&nbsp;
         <WhatsappIcon />;
       </li>

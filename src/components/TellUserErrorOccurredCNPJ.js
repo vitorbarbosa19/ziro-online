@@ -30,7 +30,7 @@ export default (props) => (
         <p>Por favor, aguarde alguns minutos e tente validar seu CNPJ novamente.</p>
         <p>Se o erro persistir, mande um Whatsapp para a gente que iremos ajudá-lo:&nbsp;
           <strong>
-            <a style={{ textDecoration: 'underline', paddingLeft: '2px' }} href='tel:-11-98176-8088'>(11) 98176-8088</a>
+            <a style={{ textDecoration: 'underline', paddingLeft: '2px' }} href='tel:-11-95349-7908'>(11) 95349-7908</a>
           </strong>&nbsp;
           <WhatsappIcon />
         </p>
@@ -41,7 +41,7 @@ export default (props) => (
         <p>Se acredita que não errou ao digitar seu CNPJ e que ele é do <strong>ramo certo e está ativo</strong>, mande um Whatsapp para a gente.</p>
         <p>Estaremos prontos para ajudá-lo a acessar o aplicativo:&nbsp;
           <strong>
-            <a style={{ textDecoration: 'underline', paddingLeft: '2px' }} href='tel:-11-98176-8088'>(11) 98176-8088</a>
+            <a style={{ textDecoration: 'underline', paddingLeft: '2px' }} href='tel:-11-95349-7908'>(11) 95349-7908</a>
           </strong>&nbsp;
           <WhatsappIcon />
         </p>
