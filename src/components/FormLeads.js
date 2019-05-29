@@ -205,6 +205,16 @@ export default (props) => (
         />
       </div>
       <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <label style={{ fontSize: '14px' }}>Ziro contatou</label>
+        <input
+          className='lead-form-input-radio'
+          type='radio'
+          name='referral'
+          value='Ziro contatou'
+          checked={props.referral === 'Ziro contatou'}
+        />
+      </div>
+      <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <label style={{ marginRight: '30px', fontSize: '14px' }}>Já sou cliente</label>
         <input
           className='lead-form-input-radio'
