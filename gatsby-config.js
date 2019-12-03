@@ -16,6 +16,12 @@ module.exports = {
     			'hind vadodara\:300,400,500,600,700',
     		]
     	}
+    },
+    {
+      resolve: `gatsby-plugin-facebook-pixel`,
+      options: {
+        pixelId: '1008325152564716'
+      }
     }
   ],
 }
