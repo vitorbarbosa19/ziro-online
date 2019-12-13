@@ -58,7 +58,7 @@ export default class BrandGallery extends React.Component {
     }
   }
   render() {
-    const whatsappLink = 'whatsapp://send?phone=5511996454922&text=https://res.cloudinary.com/ziro/image/upload/v'
+    const whatsappLink = 'whatsapp://send?phone=551133340920&text=https://res.cloudinary.com/ziro/image/upload/v'
     return (
       <div onScroll={this.lazyLoading} style={{ textAlign: 'center' }}>
         {this.state.loading
