@@ -46,8 +46,8 @@ export default class GalleryAllBrands extends React.Component {
   render() {
     return (
       <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-        <div style={{marginTop: '40px', fontFamily: 'hind vadodara'}}>Em manutenção, volte em breve.</div>
-{/*        <input style={filter} type='text' placeholder='Procurar marca...' onChange={this.updateFilter} value={this.state.filterValue} />
+        {/*<div style={{marginTop: '40px', fontFamily: 'hind vadodara'}}>Em manutenção, volte em breve.</div>*/}
+        <input style={filter} type='text' placeholder='Procurar marca...' onChange={this.updateFilter} value={this.state.filterValue} />
         <div style={containerStyle}>
           {this.state.allBrandsWithThumbs
             ? this.state.allBrandsWithThumbs
@@ -76,7 +76,7 @@ export default class GalleryAllBrands extends React.Component {
             })
             : <Spinner style={{ textAlign: 'center' }} />
           }
-        </div>*/}
+        </div>
       </div>
     )
   }
