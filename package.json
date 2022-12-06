@@ -11,7 +11,7 @@
     "babel-polyfill": "^6.26.0",
     "cloudinary-react": "^1.0.4",
     "dotenv": "^6.1.0",
-    "gatsby": "^1.9.45",
+    "gatsby": "^1.9.279",
     "gatsby-link": "^1.6.17",
     "gatsby-plugin-facebook-pixel": "^1.0.3",
     "gatsby-plugin-favicon": "^1.0.0",
